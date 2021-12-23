@@ -10,5 +10,4 @@ if __name__ == '__main__':
     list[4][3] = 2
     while(True):
         val = input()
-
-    print(list)
+        print(list)

@@ -3,12 +3,12 @@ class othello:
     def __init__(self):
         #オセロの初期配置
         self.list = np.zeros((8,8),dtype = int)
-        #1が黒、2が白（逆かもしれないです）
+        #1が黒、2が白、0が空白
         self.list[3][3] = 1
         self.list[4][4] = 1
         self.list[3][4] = 2
         self.list[4][3] = 2
-        # 1が先行
+        # 1（黒）が先行
         self.player = 1
 
         #ひっくり返すことができるx座標

@@ -1,14 +1,98 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>オセロ</title>
+    <title>CONTESY 2020-06 Koyama-asami</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="js/jquery-3.5.0.min.js" defer></script>
+    <script type="text/javascript" src="main.js" defer></script>
   </head>
   <body>
-    <h3>オセロなり</h3>
-    <hr>
-    <div style="border: double 5px #000; width:500px; height:500px; border: double 5px #000000; background-color: #007000;">
-
+    <h1>オセロゲーム</h1>
+    <!-- オセロ盤面を表示 -->
+    <div>
+    <table id="othero"><tbody>
+        <tr id="[0]">
+          <td id="[0][0]"></td>
+          <td id="[0][1]"></td>
+          <td id="[0][2]"></td>
+          <td id="[0][3]"></td>
+          <td id="[0][4]"></td>
+          <td id="[0][5]"></td>
+          <td id="[0][6]"></td>
+          <td id="[0][7]"></td>
+        </tr>
+        <tr id="[1]">
+          <td id="[1][0]"></td>
+          <td id="[1][1]"></td>
+          <td id="[1][2]"></td>
+          <td id="[1][3]"></td>
+          <td id="[1][4]"></td>
+          <td id="[1][5]"></td>
+          <td id="[1][6]"></td>
+          <td id="[1][7]"></td>
+        </tr>
+        <tr id="[2]">
+          <td id="[2][0]"></td>
+          <td id="[2][1]"></td>
+          <td id="[2][2]"></td>
+          <td id="[2][3]"></td>
+          <td id="[2][4]"></td>
+          <td id="[2][5]"></td>
+          <td id="[2][6]"></td>
+          <td id="[2][7]"></td>
+        </tr>
+        <tr id="[3]">
+          <td id="[3][0]"></td>
+          <td id="[3][1]"></td>
+          <td id="[3][2]"></td>
+          <td id="[3][3]">●</td>
+          <td id="[3][4]">◯</td>
+          <td id="[3][5]"></td>
+          <td id="[3][6]"></td>
+          <td id="[3][7]"></td>
+        </tr>
+        <tr id="[4]">
+          <td id="[4][0]"></td>
+          <td id="[4][1]"></td>
+          <td id="[4][2]">●</td>
+          <td id="[4][3]">◯</td>
+          <td id="[4][4]"></td>
+          <td id="[4][5]"></td>
+          <td id="[4][6]"></td>
+          <td id="[4][7]"></td>
+        </tr>
+        <tr id="[5]">
+          <td id="[5][0]"></td>
+          <td id="[5][1]"></td>
+          <td id="[5][2]"></td>
+          <td id="[5][3]"></td>
+          <td id="[5][4]"></td>
+          <td id="[5][5]"></td>
+          <td id="[5][6]"></td>
+          <td id="[5][7]"></td>
+        </tr>
+        <tr id="[6]">
+          <td id="[6][0]"></td>
+          <td id="[6][1]"></td>
+          <td id="[6][2]"></td>
+          <td id="[6][3]"></td>
+          <td id="[6][4]"></td>
+          <td id="[6][5]"></td>
+          <td id="[6][6]"></td>
+          <td id="[6][7]"></td>
+        </tr>
+        <tr id="[7]">
+          <td id="[7][0]"></td>
+          <td id="[7][1]"></td>
+          <td id="[7][2]"></td>
+          <td id="[7][3]"></td>
+          <td id="[7][4]"></td>
+          <td id="[7][5]"></td>
+          <td id="[7][6]"></td>
+          <td id="[7][7]"></td>
+        </tr>
+    </tbody></table>
     </div>
   </body>
 </html>

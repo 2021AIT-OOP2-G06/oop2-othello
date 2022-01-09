@@ -2,14 +2,21 @@ h1 {
   font-size: 24px;
 }
 
-#othello td {
-  border: 1px solid black;
-  width: 50px;
-  height: 50px;
-  background-color: green;
-  text-align: center;
-  vertical-align: middle;
-  table-layout: fixed;
-  padding: 1px 1px 1px 1px;
-  font-size: 33px;
+/*オセロ盤面外枠のスタイルクラス*/
+table#othero {
+    background:      #090;
+    border:          solid 2px #000;
+    border-collapse: collapse;
+    border-spacing:  0px;
+    table-layout:    fixed;
+}
+
+/*オセロ盤面１マスのスタイルクラス*/
+table#othero tr td {
+    width:           50px;
+    height:          50px;
+    border:solid 1px #fff;
+    text-align:      center;
+    vertical-align:  middle;
+    font-size:       200%;
 }

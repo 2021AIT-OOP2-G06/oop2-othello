@@ -8,7 +8,7 @@ for (var x = 0; x < othero_arr.length; x++){
 }
 
 // HTMLで定義したテーブルを取得
-var othero = document.getElementById('field')
+var othero = document.getElementById('othero')
 
 // 取得したテーブルに盤面生成
 othero_new()
@@ -93,7 +93,7 @@ function cheng_turn () {
   if(turn == 0){
     // 0は最初として、メッセージのみで処理終了
     turn = 1
-    tarn_msg.textContent = "黒の番です。"
+    tarn_msg.textContent = "黒(あなた)の番です。"
     return
   }
   // ターンを変更
@@ -142,9 +142,9 @@ function cheng_turn () {
     if( white_count == black_count) {
       alert("勝負は引分です。")
     } else if (white_count > black_count){
-      alert("勝負は、黒：" + black_count + "対、白：" + white_count + "で、白の勝ちです。")
+      alert("勝負は、黒(あなた)：" + black_count + "対、白(AI)：" + white_count + "で、白(AI)の勝ちです。")
     } else {
-      alert("勝負は、黒："+ black_count + "対、白："+ white_count + "で、黒の勝ちです。")
+      alert("勝負は、黒(あなた)："+ black_count + "対、白(AI)："+ white_count + "で、黒(あなた)の勝ちです。")
     }
 
   } else {
@@ -152,11 +152,11 @@ function cheng_turn () {
     if(check_reverse_count == 0){
       switch( turn ) {
         case -1:
-          alert("白の置ける場所がありません。続けて黒の番となります。")
+          alert("白(AI)の置ける場所がありません。続けて黒(あなた)の番となります。")
           turn = turn * -1
           break;
         case 1:
-          alert("黒の置ける場所がありません。続けて白の番となります。")
+          alert("黒(あなた)の置ける場所がありません。続けて白(AI)の番となります。")
           turn = turn * -1
           break;
       }
@@ -166,10 +166,10 @@ function cheng_turn () {
   // ターンを表示する
   switch( turn ) {
     case -1:
-    tarn_msg.textContent = "白の番です。";
+    tarn_msg.textContent = "白(AI)の番です。";
     break;
     case 1:
-    tarn_msg.textContent = "黒の番です。";
+    tarn_msg.textContent = "黒(あなた)の番です。";
     break;
   }
 };

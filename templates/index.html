@@ -1,98 +1,104 @@
-<!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <title>CONTESY 2020-06 Koyama-asami</title>
-    <link rel="stylesheet" type="text/css" href="../static/main.css">
-    <script type="text/javascript" src="js/jquery-3.5.0.min.js" defer></script>
-    <script type="text/javascript" src="main.js" defer></script>
-  </head>
-  <body>
-    <h1>オセロゲーム</h1>
-    <!-- オセロ盤面を表示 -->
-    <div>
-    <table id="othero"><tbody>
-        <tr id="[0]">
-          <td id="[0][0]"></td>
-          <td id="[0][1]"></td>
-          <td id="[0][2]"></td>
-          <td id="[0][3]"></td>
-          <td id="[0][4]"></td>
-          <td id="[0][5]"></td>
-          <td id="[0][6]"></td>
-          <td id="[0][7]"></td>
-        </tr>
-        <tr id="[1]">
-          <td id="[1][0]"></td>
-          <td id="[1][1]"></td>
-          <td id="[1][2]"></td>
-          <td id="[1][3]"></td>
-          <td id="[1][4]"></td>
-          <td id="[1][5]"></td>
-          <td id="[1][6]"></td>
-          <td id="[1][7]"></td>
-        </tr>
-        <tr id="[2]">
-          <td id="[2][0]"></td>
-          <td id="[2][1]"></td>
-          <td id="[2][2]"></td>
-          <td id="[2][3]"></td>
-          <td id="[2][4]"></td>
-          <td id="[2][5]"></td>
-          <td id="[2][6]"></td>
-          <td id="[2][7]"></td>
-        </tr>
-        <tr id="[3]">
-          <td id="[3][0]"></td>
-          <td id="[3][1]"></td>
-          <td id="[3][2]"></td>
-          <td id="[3][3]">●</td>
-          <td id="[3][4]">◯</td>
-          <td id="[3][5]"></td>
-          <td id="[3][6]"></td>
-          <td id="[3][7]"></td>
-        </tr>
-        <tr id="[4]">
-          <td id="[4][0]"></td>
-          <td id="[4][1]"></td>
-          <td id="[4][2]"></td>
-          <td id="[4][3]">◯</td>
-          <td id="[4][4]">●</td>
-          <td id="[4][5]"></td>
-          <td id="[4][6]"></td>
-          <td id="[4][7]"></td>
-        </tr>
-        <tr id="[5]">
-          <td id="[5][0]"></td>
-          <td id="[5][1]"></td>
-          <td id="[5][2]"></td>
-          <td id="[5][3]"></td>
-          <td id="[5][4]"></td>
-          <td id="[5][5]"></td>
-          <td id="[5][6]"></td>
-          <td id="[5][7]"></td>
-        </tr>
-        <tr id="[6]">
-          <td id="[6][0]"></td>
-          <td id="[6][1]"></td>
-          <td id="[6][2]"></td>
-          <td id="[6][3]"></td>
-          <td id="[6][4]"></td>
-          <td id="[6][5]"></td>
-          <td id="[6][6]"></td>
-          <td id="[6][7]"></td>
-        </tr>
-        <tr id="[7]">
-          <td id="[7][0]"></td>
-          <td id="[7][1]"></td>
-          <td id="[7][2]"></td>
-          <td id="[7][3]"></td>
-          <td id="[7][4]"></td>
-          <td id="[7][5]"></td>
-          <td id="[7][6]"></td>
-          <td id="[7][7]"></td>
-        </tr>
-    </tbody></table>
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/index.css">
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <title>オセロ</title>
+</head>
+<body>
+  
+  <table id='tbl1'>
+    <tbody>
+      <tr>
+        <td class="cell" id='a1'></td>
+        <td class="cell" id='a2'></td>
+        <td class="cell" id='a3'></td>
+        <td class="cell" id='a4'></td>
+        <td class="cell" id='a5'></td>
+        <td class="cell" id='a6'></td>
+        <td class="cell" id='a7'></td>
+        <td class="cell" id='a8'></td>
+      </tr>
+      <tr>
+        <td class="cell" id='b1'></td>
+        <td class="cell" id='b2'></td>
+        <td class="cell" id='b3'></td>
+        <td class="cell" id='b4'></td>
+        <td class="cell" id='b5'></td>
+        <td class="cell" id='b6'></td>
+        <td class="cell" id='b7'></td>
+        <td class="cell" id='b8'></td>
+      </tr>
+      <tr>
+        <td class="cell" id='c1'></td>
+        <td class="cell" id='c2'></td>
+        <td class="cell" id='c3'></td>
+        <td class="cell" id='c4'></td>
+        <td class="cell" id='c5'></td>
+        <td class="cell" id='c6'></td>
+        <td class="cell" id='c7'></td>
+        <td class="cell" id='c8'></td>
+      </tr>
+      <tr>
+        <td class="cell" id='d1'></td>
+        <td class="cell" id='d2'></td>
+        <td class="cell" id='d3'></td>
+        <td class="cell" id='d4'></td>
+        <td class="cell" id='d5'></td>
+        <td class="cell" id='d6'></td>
+        <td class="cell" id='d7'></td>
+        <td class="cell" id='d8'></td>
+      </tr>
+      <tr>
+        <td class="cell" id='e1'></td>
+        <td class="cell" id='e2'></td>
+        <td class="cell" id='e3'></td>
+        <td class="cell" id='e4'></td>
+        <td class="cell" id='e5'></td>
+        <td class="cell" id='e6'></td>
+        <td class="cell" id='e7'></td>
+        <td class="cell" id='e8'></td>
+      </tr>
+      <tr>
+        <td class="cell" id='f1'></td>
+        <td class="cell" id='f2'></td>
+        <td class="cell" id='f3'></td>
+        <td class="cell" id='f4'></td>
+        <td class="cell" id='f5'></td>
+        <td class="cell" id='f6'></td>
+        <td class="cell" id='f7'></td>
+        <td class="cell" id='f8'></td>
+      </tr>
+      <tr>
+        <td class="cell" id='g1'></td>
+        <td class="cell" id='g2'></td>
+        <td class="cell" id='g3'></td>
+        <td class="cell" id='g4'></td>
+        <td class="cell" id='g5'></td>
+        <td class="cell" id='g6'></td>
+        <td class="cell" id='g7'></td>
+        <td class="cell" id='g8'></td>
+      </tr>
+      <tr>
+        <td class="cell" id='h1'></td>
+        <td class="cell" id='h2'></td>
+        <td class="cell" id='h3'></td>
+        <td class="cell" id='h4'></td>
+        <td class="cell" id='h5'></td>
+        <td class="cell" id='h6'></td>
+        <td class="cell" id='h7'></td>
+        <td class="cell" id='h8'></td>
+      </tr>
+    </tbody>
+  </table>
+  <script>
+    $("#tbl1 td").bind('click', function(){
+        $tag_td = $(this)[0];
+        $tag_tr = $(this).parent()[0];
+        console.log("%s, %s", $tag_tr.rowIndex, $tag_td.cellIndex);
+    });
+  </script>
+</body>
 </html>

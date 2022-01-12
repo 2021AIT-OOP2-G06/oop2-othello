@@ -6,7 +6,6 @@
   <title>オセロ</title>
 </head>
 <body>
-  
   <table id='tbl1'>
     <tbody>
       <tr>
@@ -103,6 +102,7 @@
         console.log(cell_name)
         $(cell_name).removeClass('none');
         $(cell_name).addClass('changed');
+        $(cell_name).append("<h1>●</h1>")
     });
   </script>
 </body>

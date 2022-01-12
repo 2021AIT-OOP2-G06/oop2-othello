@@ -179,7 +179,7 @@ class othello:
             j[key] = int(test[n])
             n+=1
         print(j)
-        #保存
+        #とりあえずファイルに保存しているためあとで変更が必要
         with(open('templates/othello_bord.json','w')) as f:
             json.dump(j, f, indent=4, ensure_ascii=False)
         pass

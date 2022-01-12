@@ -17,5 +17,5 @@ $("#tbl1 td").bind('click', function(){
 
             }
         })
-    })
+    });
 });

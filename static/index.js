@@ -15,7 +15,7 @@ window.onload = function() {
 };
 
 function post() {
-    xhr.open('POST', 'calc.php', true);
+    xhr.open('POST', '.json', true);
     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
     // フォームに入力した値をリクエストとして設定
     var request = "arg1=" + arg1.value + "&arg2=" + arg2.value;

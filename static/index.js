@@ -4,13 +4,13 @@ $("#tbl1 td").bind('click', function(){
     $tag_tr = $(this).parent()[0];
     console.log("%s, %s", $tag_tr.rowIndex, $tag_td.cellIndex);
     data={"lows":Number($tag_tr.rowIndex),"cols":Number($tag_td.cellIndex)}
-    fetch('/url', {method: 'POST', body: data,})
+    fetch('/action', {method: 'POST', body: data,})
     .then(function (response) {
         response.json().then((data) => {
             for(let i=0;i<64;i++){
-                if(data[i].stone==1){
+                if(data[i].stone==0){
                     document.getElementById(data[i].position).innerHTML="●"
-                }else if(data[i].stone==-1){
+                }else if(data[i].stone==1){
                     document.getElementById(data[i].position).innerHTML="◯"
                 }
             }

@@ -98,12 +98,13 @@
 
         var change_tbl = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
         var cell_name = change_tbl[$tag_tr.rowIndex].concat($tag_td.cellIndex+1)
-        cell_name = "#".concat(cell_name)
-        console.log(cell_name)
-        $(cell_name).removeClass('none');
-        $(cell_name).addClass('changed');
-        $(cell_name).append("<h1>●</h1>")
+        sharp_cell_name = "#".concat(cell_name)
+        $(sharp_cell_name).removeClass('none');
+        $(sharp_cell_name).addClass('changed');
+        /* $(cell_name).append("<h1>●</h1>") */
+        document.getElementById(cell_name).innerHTML = "<h1>●</h1>"
     });
+
   </script>
 </body>
 </html>

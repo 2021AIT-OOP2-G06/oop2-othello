@@ -1,0 +1,11 @@
+td{
+  background-color: green;
+  width: 30px;
+  height: 30px;
+
+  border-color: black;
+}
+
+table , td, th {
+border: 1px solid black;
+}

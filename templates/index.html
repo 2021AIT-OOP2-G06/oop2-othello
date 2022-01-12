@@ -96,6 +96,10 @@
         $tag_td = $(this)[0];
         $tag_tr = $(this).parent()[0];
         console.log("%s, %s", $tag_tr.rowIndex, $tag_td.cellIndex);
+
+        var change_tbl = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+        var cell_name = change_tbl[$tag_tr.rowIndex].concat($tag_td.cellIndex)
+        console.log(cell_name)
     });
   </script>
 </body>

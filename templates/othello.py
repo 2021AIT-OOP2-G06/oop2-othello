@@ -1,5 +1,7 @@
 import numpy as np
+import json
 from numpy.core.fromnumeric import size
+
 
 
 class othello:
@@ -161,6 +163,27 @@ class othello:
         else:
             print("同点です")
 
+    def sendjson(self):
+        #用意したjsonファイルを読み込み
+        json_open = open('templates/othello_bord.json', 'r')
+        j = json.load(json_open)
+        #jsonに現在の盤面をかきこむ
+        test = np.zeros(64)
+        n=0
+        for x in range(8):
+            for y in range(8):
+                test[n] = self.list[y][x]
+                n+=1
+        n=0
+        for key in j:
+            j[key] = int(test[n])
+            n+=1
+        print(j)
+        #とりあえずファイルに保存しているためあとで変更が必要
+        with(open('templates/othello_bord.json','w')) as f:
+            json.dump(j, f, indent=4, ensure_ascii=False)
+        pass
+
 
 if __name__ == '__main__':
     app = othello()
@@ -197,3 +220,4 @@ if __name__ == '__main__':
 
         # 石をひっくり返す
         app.Overturn(int(valx), int(valy))
+        app.sendjson()

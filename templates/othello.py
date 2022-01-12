@@ -1,5 +1,7 @@
 import numpy as np
+import json
 from numpy.core.fromnumeric import size
+
 
 
 class othello:
@@ -161,9 +163,29 @@ class othello:
         else:
             print("同点です")
 
+    def returnjson(self):
+        #用意したjsonファイルを読み込み
+        json_open = open('templates/othello_bord.json', 'r')
+        j = json.load(json_open)
+        #jsonに現在の盤面をかきこむ
+        x = 0
+        y = 0 
+        for key in j.keys():
+            if x == 8:
+                x = 0
+                y += 1
+            j[key] = self.list[y][x]
+            x += 1
+            
+
+        with(open('templates/othello_bord.json','w')) as f:
+            json.dump(j, f, indent=4, ensure_ascii=False)
+        pass
+
 
 if __name__ == '__main__':
     app = othello()
+    app.returnjson()
     while(True):
         print(app.list)
         print(app.player)

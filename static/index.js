@@ -7,15 +7,12 @@ $("#tbl1 td").bind('click', function(){
     fetch('/url', {method: 'POST', body: data,})
     .then(function (response) {
         response.json().then((data) => {
-
-            /*if (data.error) {
-                // エラーの受信
-                document.getElementById('notice').innerHTML = data.error
-            }*/
-
-            if (data.result) {
-                // メッセージの受信
-
+            for(let i=0;i<64;i++){
+                if(data[i].stone==1){
+                    document.getElementById(data[i].position).innerHTML="●"
+                }else if(data[i].stone==-1){
+                    document.getElementById(data[i].position).innerHTML="◯"
+                }
             }
         })
     });

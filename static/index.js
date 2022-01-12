@@ -1,8 +1,9 @@
 window.onload = function() {
-    // 計算ボタンを押した際の動作を設定
-
+    // 石置いた動作
+    document.getElementById('put_stone').onclick = function() {
+        post();
+    };
     xhr = new XMLHttpRequest();
-
     // サーバからのデータ受信を行った際の動作
     xhr.onload = function(e) {
         if (xhr.readyState === 4) {
@@ -15,9 +16,11 @@ window.onload = function() {
 };
 
 function post() {
-    xhr.open('POST', '.json', true);
+    // 石を置いた時の動作
+    xhr.open('POST', 'stone_state.json', true);
     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
-    // フォームに入力した値をリクエストとして設定
-    var request = "arg1=" + arg1.value + "&arg2=" + arg2.value;
+    // 石を置いた座標を取得してJSONとして送信する
+    var
+    var request = ;
     xhr.send(request);
 }

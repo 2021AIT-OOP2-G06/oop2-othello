@@ -163,7 +163,7 @@ class othello:
         else:
             print("同点です")
 
-    def returnjson(self):
+    def sendjson(self):
         #用意したjsonファイルを読み込み
         json_open = open('templates/othello_bord.json', 'r')
         j = json.load(json_open)
@@ -220,3 +220,4 @@ if __name__ == '__main__':
 
         # 石をひっくり返す
         app.Overturn(int(valx), int(valy))
+        app.sendjson()

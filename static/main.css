@@ -1,0 +1,26 @@
+h1 {
+    font-size: 24px;
+}
+
+
+/*オセロ盤面外枠のスタイルクラス*/
+
+table#othero {
+    background: #090;
+    border: solid 2px #000;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    table-layout: fixed;
+}
+
+
+/*オセロ盤面１マスのスタイルクラス*/
+
+table#othero tr td {
+    width: 4px;
+    height: 54px;
+    border: solid 1px #fff;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 200%;
+}

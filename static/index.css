@@ -1,8 +1,9 @@
 td{
   background-color: green;
-  width: 30px;
-  height: 30px;
-
+  width: 60px;
+  height: 60px;
+  font-size: 40px;
+  text-align:center;
   border-color: black;
 }
 

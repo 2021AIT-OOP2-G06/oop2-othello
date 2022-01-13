@@ -8,12 +8,10 @@
   <title>オセロ</title>
 </head>
 <body>
-<<<<<<< HEAD
-=======
-
->>>>>>> main
   <div>
-    <label id="notice">お知らせ<input type="text" id="notice" readonly="readonly"></label>
+    <label id="notice">お知らせ
+      <input type="text" id="notice" readonly="readonly" value="簡単でプレイ中">
+    </label>
   </div>
   <table id='tbl1'>
     <tbody>
@@ -99,19 +97,7 @@
       </tr>
     </tbody>
   </table>
-<<<<<<< HEAD
   <!--スクリプトは別ファイルに分離しました-->
   <script type="text/javascript" src="../static/index.js" defer></script>
 </body>
 </html>
-=======
-  <script>
-    $("#tbl1 td").bind('click', function(){
-        $tag_td = $(this)[0];
-        $tag_tr = $(this).parent()[0];
-        console.log("%s, %s", $tag_tr.rowIndex, $tag_td.cellIndex);
-    });
-  </script>
-</body>
-</html>
->>>>>>> main

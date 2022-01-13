@@ -8,9 +8,9 @@ $("#tbl1 td").bind('click', function(){
     .then(function (response) {
         response.json().then((data) => {
             for(let i=0;i<64;i++){
-                if(data[i].stone==0){
+                if(data[i].stone==1){
                     document.getElementById(data[i].position).innerHTML="●"
-                }else if(data[i].stone==1){
+                }else if(data[i].stone==-1){
                     document.getElementById(data[i].position).innerHTML="◯"
                 }
             }

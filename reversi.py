@@ -1,6 +1,10 @@
 import pandas as pd
 import re
 import numpy as np
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+# from keras.engine.topology import Layer
 
 # csvの読み込み
 df = pd.read_csv("wthor.csv")
@@ -210,3 +214,37 @@ x_train = np.concatenate([boards_black, boards_white])
 y_train = np.concatenate([moves_black, moves_white])
 # 教師データは8x8の2次元データになっているので、64要素の1次元データにreshapeする
 y_train_reshape = y_train.reshape(-1, 64)
+
+class Bias(keras.layers.Layer):
+    def __init__(self, input_shape):
+        super(Bias, self).__init__()
+        self.W = tf.Variable(initial_value=tf.zeros(input_shape[1:]), trainable=True)
+
+    def call(self, inputs):
+        return inputs + self.W
+
+model = keras.Sequential()
+model.add(layers.Permute((2,3,1), input_shape=(2,8,8)))
+model.add(layers.Conv2D(128, kernel_size=3,padding='same',activation='relu'))
+model.add(layers.Conv2D(128, kernel_size=3,padding='same',activation='relu'))
+model.add(layers.Conv2D(128, kernel_size=3,padding='same',activation='relu'))
+model.add(layers.Conv2D(128, kernel_size=3,padding='same',activation='relu'))
+model.add(layers.Conv2D(128, kernel_size=3,padding='same',activation='relu'))
+model.add(layers.Conv2D(128, kernel_size=3,padding='same',activation='relu'))
+model.add(layers.Conv2D(128, kernel_size=3,padding='same',activation='relu'))
+model.add(layers.Conv2D(128, kernel_size=3,padding='same',activation='relu'))
+model.add(layers.Conv2D(128, kernel_size=3,padding='same',activation='relu'))
+model.add(layers.Conv2D(128, kernel_size=3,padding='same',activation='relu'))
+model.add(layers.Conv2D(128, kernel_size=3,padding='same',activation='relu'))
+model.add(layers.Conv2D(128, kernel_size=3,padding='same',activation='relu'))
+model.add(layers.Conv2D(1, kernel_size=1,use_bias=False))
+model.add(layers.Flatten())
+model.add(Bias((1, 64)))
+model.add(layers.Activation('softmax'))
+
+model.compile(keras.optimizers.SGD(lr=0.01, momentum=0.0, decay=0.0, nesterov=False), 'categorical_crossentropy', metrics=['accuracy'])
+try:
+    model.fit(x_train, y_train_reshape, epochs=600, batch_size=32, validation_split=0.2)
+except KeyboardInterrupt:
+    model.save('saved_model_reversi/my_model')
+    print('Output saved')

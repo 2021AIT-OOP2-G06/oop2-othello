@@ -20,7 +20,7 @@ function post() {
     xhr.open('POST', 'stone_state.json', true);
     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
     // 石を置いた座標を取得してJSONとして送信する
-    var
+    // var i
     var request = ;
     xhr.send(request);
 }

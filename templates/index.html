@@ -91,7 +91,20 @@
     </tbody>
   </table>
   <script>
+    var turn = 0
+    var user1_data = document.getElementsByClassName("user1")
+    //  console.log(cell_data)
+    for(i=0; i<user1_data.length;i++){
+      document.getElementById(user1_data[i].id).innerHTML = "<h1>●</h1>"
+    } 
+
+    var user2_data = document.getElementsByClassName("user2")
+    for(i=0; i<user2_data.length;i++){
+      document.getElementById(user2_data[i].id).innerHTML = "<h1>○</h1>"
+    }
+
     $("#tbl1 td").bind('click', function(){
+        turn = (turn + 1) % 2
         $tag_td = $(this)[0];
         $tag_tr = $(this).parent()[0];
         console.log("%s, %s", $tag_tr.rowIndex, $tag_td.cellIndex);
@@ -102,9 +115,39 @@
         $(sharp_cell_name).removeClass('none');
         $(sharp_cell_name).addClass('changed');
         /* $(cell_name).append("<h1>●</h1>") */
-        document.getElementById(cell_name).innerHTML = "<h1>●</h1>"
-    });
+        if (turn == 0){
+          document.getElementById(cell_name).innerHTML = "<h1>●</h1>"
+        }else{
+          document.getElementById(cell_name).innerHTML = "<h1>○</h1>"
+        }
 
-  </script>
+        var user1_data = document.getElementsByClassName("user1")
+        //  console.log(cell_data)
+        for(i=0; i<user1_data.length;i++){
+          document.getElementById(user1_data[i].id).innerHTML = "<h1>●</h1>"
+        } 
+
+        var user2_data = document.getElementsByClassName("user2")
+        for(i=0; i<user2_data.length;i++){
+          document.getElementById(user2_data[i].id).innerHTML = "<h1>○</h1>"
+        }
+
+        var all_data = document.getElementsByTagName("td")
+        var data = []
+        for(i=0; i<all_data.length; i++){
+          if(all_data[i].className == "none"){
+            data.push(-1)
+          }else if(all_data[i].className == "user1"){
+            data.push(0)
+          }else{
+            data.push(1)
+          }
+        }
+
+        console.log(data)
+        // [1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 1, -1, -1, -1, -1, -1, -1, 1, 0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+
+    });
+ </script>
 </body>
 </html>

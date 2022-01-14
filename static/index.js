@@ -1,7 +1,7 @@
 //<<<<<<< HEAD
-$(function(){
+/*$(function(){
     $("#notice").val("レベルでプレイ中");
-});
+});*/
 
 $("#tbl1 td").bind('click', function(){
     $tag_td = $(this)[0];
@@ -23,11 +23,10 @@ $("#tbl1 td").bind('click', function(){
 });
 =======
 window.onload = function() {
-    // 石置いた動作
-    document.getElementById('put_stone').onclick = function() {
-        post();
-    };
+    // 計算ボタンを押した際の動作を設定
+
     xhr = new XMLHttpRequest();
+
     // サーバからのデータ受信を行った際の動作
     xhr.onload = function(e) {
         if (xhr.readyState === 4) {
@@ -40,12 +39,10 @@ window.onload = function() {
 };
 
 function post() {
-    // 石を置いた時の動作
-    xhr.open('POST', 'stone_state.json', true);
+    xhr.open('POST', '.json', true);
     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
-    // 石を置いた座標を取得してJSONとして送信する
-    var
-    var request = ;
+    // フォームに入力した値をリクエストとして設定
+    var request = "arg1=" + arg1.value + "&arg2=" + arg2.value;
     xhr.send(request);
 }
 >>>>>>> main

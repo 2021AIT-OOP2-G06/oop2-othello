@@ -1,4 +1,8 @@
-<<<<<<< HEAD
+//<<<<<<< HEAD
+$(function(){
+    $("#notice").val("レベルでプレイ中");
+});
+
 $("#tbl1 td").bind('click', function(){
     $tag_td = $(this)[0];
     $tag_tr = $(this).parent()[0];

@@ -8,6 +8,10 @@ app.config["JSON_AS_ASCII"] = False  # 日本語などのASCII以外の文字列
 def index():
     return render_template("index.html")
 
+@app.route('/pages/')
+def pages():
+    return render_template("toppage.html")
+
 
 if __name__ == "__main__":
     # debugモードが不要の場合は、debug=Trueを消してください

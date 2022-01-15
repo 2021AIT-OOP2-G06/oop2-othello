@@ -1,4 +1,3 @@
-//<<<<<<< HEAD
 /*$(function(){
     $("#notice").val("レベルでプレイ中");
 });*/
@@ -43,5 +42,8 @@ function post() {
     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
     // フォームに入力した値をリクエストとして設定
     var request = "arg1=" + arg1.value + "&arg2=" + arg2.value;
+    // 石を置いた座標を取得してJSONとして送信する
+    // var i
+//     var request = ;
     xhr.send(request);
 }

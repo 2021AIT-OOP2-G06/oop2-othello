@@ -21,7 +21,7 @@ $("#tbl1 td").bind('click', function(){
         })
     });
 });
-=======
+
 window.onload = function() {
     // 計算ボタンを押した際の動作を設定
 
@@ -45,4 +45,3 @@ function post() {
     var request = "arg1=" + arg1.value + "&arg2=" + arg2.value;
     xhr.send(request);
 }
->>>>>>> main

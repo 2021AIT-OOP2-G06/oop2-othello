@@ -172,13 +172,11 @@ class othello:
         n=0
         for x in range(8):
             for y in range(8):
-                test[n] = self.list[y][x]
+                j[n]['stone'] = int(self.list[y][x])
                 n+=1
-        n=0
-        for key in j:
-            j[key] = int(test[n])
-            n+=1
-        print(j)
+
+        
+        
         #とりあえずファイルに保存しているためあとで変更が必要
         with(open('templates/othello_bord.json','w')) as f:
             json.dump(j, f, indent=4, ensure_ascii=False)

@@ -98,10 +98,19 @@
     </tbody>
   </table>
   <input type="button" id="reverse" value="トップページに戻る" onclick="location.href='toppage.html'">
-  <!--スクリプトは別ファイルに分離しました-->
-  <script type="text/javascript" src="../static/index.js" defer></script>
+  <!--<script type="text/javascript" src="../static/index.js" defer></script>-->
 
   <script>
+    /*
+    data=$tag_tr.rowIndex + ", " + $tag_td.cellIndex;
+    fetch('/action', {method: 'POST', body: data,})
+    .then(function (response) {
+        response.json().then((data) => {
+
+        })
+    });
+    */
+
     var turn = 0
     var user1_data = document.getElementsByClassName("user1")
     //  console.log(cell_data)

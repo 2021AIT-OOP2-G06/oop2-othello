@@ -1,0 +1,91 @@
+<html lang="ja">
+<!--ボックスをボタンに見立てた処理(笑)です-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js">
+    </script>
+    <title>ボタン例(変更可)</title>
+</head>
+
+<p>TOPページ</p>
+<div class="button">
+    <a href="#" class="battle">対戦する</a>
+</div>
+
+<h1>†CPU BATTLE†</h1>
+
+<div class="button">
+    <a href="#" class="cp_btn">強い</a>
+    <a href="#" class="cp_btn">普通</a>
+    <a href="#" class="cp_btn">弱い</a>
+</div>
+
+<style>
+    p {
+        font-size: 30pt;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 30pt;
+        margin-top: 2.5cm;
+        text-align: center;
+    }
+
+    a.battle {
+        position: relative;
+        text-align: center;
+        font-size: 18px;
+        margin: 0 auto;
+        display: block;
+        width: 160px;
+        padding: 0;
+        text-align: center;
+        text-decoration: none;
+        margin-bottom: 1.25cm;
+        color: #FFF;
+        background: #7f7f7f;
+        border-bottom: 2px solid #000000;
+        border-radius: 4px;
+        box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    }
+
+    a.battle:active {
+        border-bottom: 2px solid #808080;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+        color: red;
+    }
+
+    a.cp_btn {
+        /*押す前の色設定*/
+        position: relative;
+        text-align: center;
+        font-size: 18pt;
+        margin: 0 auto;
+        display: block;
+        width: 160px;
+        padding: 2px;
+        padding: 0.8em;
+        text-align: center;
+        text-decoration: none;
+        color: #FFF;
+        background: #7f7f7f;
+        border-bottom: 2px solid #000000;
+        border-radius: 4px;
+        box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    }
+    /*押した時の色設定*/
+
+    a.cp_btn:active {
+        border-bottom: 2px solid #808080;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+        color: #000000;
+    }
+</style>
+
+<script>
+    /*紐付け用*/
+</script>

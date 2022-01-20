@@ -333,7 +333,7 @@
                     grid = response.grid;
                     ScoreWh = 0;
                     ScoreBla = 0;
-                    // refreshGrid();
+                    refreshGrid();
                 },
                 error: function (error) {
                     console.log(error);
@@ -342,47 +342,47 @@
         });
     }
 
-    // function refreshGrid() {
-    //     if (matrizLlena() != true) {
-    //         for (var row = 0; row < grid.length; row++) {
-    //             for (var col = 0; col < grid.length; col++) {
-    //                 if (grid[row][col] == 0) {
-    //                     document.getElementById("cell" + row + col).childNodes[0].style.backgroundColor = "#069685";
-    //                 }
-    //                 if (grid[row][col] == 1) {
-    //                     document.getElementById("cell" + row + col).childNodes[0].style.backgroundColor = "#FFFFFF";
-    //                     ScoreWh = ScoreWh + 1;
-    //                     document.getElementById("scoreWhite").innerHTML = "白: " + ScoreWh.toString();
-    //                 }
-    //                 if (grid[row][col] == 2) {
-    //                     document.getElementById("cell" + row + col).childNodes[0].style.backgroundColor = "#000000";
-    //                     ScoreBla = ScoreBla + 1;
-    //                     document.getElementById("scoreBlack").innerHTML = "黒: " + ScoreBla.toString();
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     else {
-    //         for (var row = 0; row < grid.length; row++) {
-    //             for (var col = 0; col < grid.length; col++) {
-    //                 //si la celda es cero: pintece de verde
-    //                 if (grid[row][col] == 0) {
-    //                     document.getElementById("cell" + row + col).childNodes[0].style.backgroundColor = "#069685";
-    //                 }
-    //                 if (grid[row][col] == 1) {
-    //                     document.getElementById("cell" + row + col).childNodes[0].style.backgroundColor = "#FFFFFF";
-    //                     ScoreWh = ScoreWh + 1;
-    //                     document.getElementById("scoreWhite").innerHTML = "白: " + ScoreWh.toString();
-    //                 }
-    //                 if (grid[row][col] == 2) {
-    //                     document.getElementById("cell" + row + col).childNodes[0].style.backgroundColor = "#000000";
-    //                     ScoreBla = ScoreBla + 1;
-    //                     document.getElementById("scoreBlack").innerHTML = "黒: " + ScoreBla.toString();
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+    function refreshGrid() {
+        if (matrizLlena() != true) {
+            for (var row = 0; row < grid.length; row++) {
+                for (var col = 0; col < grid.length; col++) {
+                    if (grid[row][col] == 0) {
+                        document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#069685";
+                    }
+                    if (grid[row][col] == 1) {
+                        document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#FFFFFF";
+                        ScoreWh = ScoreWh + 1;
+                        document.getElementById("scoreWhite").innerHTML = "白: " + ScoreWh.toString();
+                    }
+                    if (grid[row][col] == 2) {
+                        document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#000000";
+                        ScoreBla = ScoreBla + 1;
+                        document.getElementById("scoreBlack").innerHTML = "黒: " + ScoreBla.toString();
+                    }
+                }
+            }
+        }
+        else {
+            for (var row = 0; row < grid.length; row++) {
+                for (var col = 0; col < grid.length; col++) {
+                    //si la celda es cero: pintece de verde
+                    if (grid[row][col] == 0) {
+                        document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#069685";
+                    }
+                    if (grid[row][col] == 1) {
+                        document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#FFFFFF";
+                        ScoreWh = ScoreWh + 1;
+                        document.getElementById("scoreWhite").innerHTML = "白: " + ScoreWh.toString();
+                    }
+                    if (grid[row][col] == 2) {
+                        document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#000000";
+                        ScoreBla = ScoreBla + 1;
+                        document.getElementById("scoreBlack").innerHTML = "黒: " + ScoreBla.toString();
+                    }
+                }
+            }
+        }
+    }
 
     function matrizLlena() {
         for (var row = 0; row < grid.length; row++) {

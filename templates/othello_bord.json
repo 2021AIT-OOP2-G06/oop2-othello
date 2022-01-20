@@ -1,66 +1,258 @@
-{
-    "a1": 0,
-    "a2": 0,
-    "a3": 0,
-    "a4": 0,
-    "a5": 0,
-    "a6": 0,
-    "a7": 0,
-    "a8": 0,
-    "b1": 0,
-    "b2": 0,
-    "b3": 1,
-    "b4": 0,
-    "b5": 0,
-    "b6": 0,
-    "b7": 0,
-    "b8": 0,
-    "c1": 0,
-    "c2": 0,
-    "c3": 0,
-    "c4": 1,
-    "c5": 1,
-    "c6": 0,
-    "c7": 0,
-    "c8": 0,
-    "d1": 0,
-    "d2": 0,
-    "d3": 0,
-    "d4": 2,
-    "d5": 1,
-    "d6": 0,
-    "d7": 0,
-    "d8": 0,
-    "e1": 0,
-    "e2": 0,
-    "e3": 0,
-    "e4": 2,
-    "e5": 1,
-    "e6": 0,
-    "e7": 0,
-    "e8": 0,
-    "f1": 0,
-    "f2": 0,
-    "f3": 0,
-    "f4": 0,
-    "f5": 0,
-    "f6": 0,
-    "f7": 0,
-    "f8": 0,
-    "g1": 0,
-    "g2": 0,
-    "g3": 0,
-    "g4": 0,
-    "g5": 0,
-    "g6": 0,
-    "g7": 0,
-    "g8": 0,
-    "h1": 0,
-    "h2": 0,
-    "h3": 0,
-    "h4": 0,
-    "h5": 0,
-    "h6": 0,
-    "h7": 0,
-    "h8": 0
-}
+[
+    {
+        "pozistion": "a1",
+        "stone": 0
+    },
+    {
+        "pozistion": "a2",
+        "stone": 0
+    },
+    {
+        "pozistion": "a3",
+        "stone": 0
+    },
+    {
+        "pozistion": "a4",
+        "stone": 0
+    },
+    {
+        "pozistion": "a5",
+        "stone": 0
+    },
+    {
+        "pozistion": "a6",
+        "stone": 0
+    },
+    {
+        "pozistion": "a7",
+        "stone": 0
+    },
+    {
+        "pozistion": "a8",
+        "stone": 0
+    },
+    {
+        "pozistion": "b1",
+        "stone": 0
+    },
+    {
+        "pozistion": "b2",
+        "stone": 0
+    },
+    {
+        "pozistion": "b3",
+        "stone": 0
+    },
+    {
+        "pozistion": "b4",
+        "stone": 0
+    },
+    {
+        "pozistion": "b5",
+        "stone": 0
+    },
+    {
+        "pozistion": "b6",
+        "stone": 0
+    },
+    {
+        "pozistion": "b7",
+        "stone": 0
+    },
+    {
+        "pozistion": "b8",
+        "stone": 0
+    },
+    {
+        "pozistion": "c1",
+        "stone": 0
+    },
+    {
+        "pozistion": "c2",
+        "stone": 0
+    },
+    {
+        "pozistion": "c3",
+        "stone": 0
+    },
+    {
+        "pozistion": "c4",
+        "stone": 0
+    },
+    {
+        "pozistion": "c5",
+        "stone": 1
+    },
+    {
+        "pozistion": "c6",
+        "stone": 0
+    },
+    {
+        "pozistion": "c7",
+        "stone": 0
+    },
+    {
+        "pozistion": "d8",
+        "stone": 0
+    },
+    {
+        "pozistion": "d1",
+        "stone": 0
+    },
+    {
+        "pozistion": "d2",
+        "stone": 0
+    },
+    {
+        "pozistion": "d3",
+        "stone": 0
+    },
+    {
+        "pozistion": "d4",
+        "stone": 1
+    },
+    {
+        "pozistion": "d5",
+        "stone": 1
+    },
+    {
+        "pozistion": "d6",
+        "stone": 0
+    },
+    {
+        "pozistion": "d7",
+        "stone": 0
+    },
+    {
+        "pozistion": "d8",
+        "stone": 0
+    },
+    {
+        "pozistion": "e1",
+        "stone": 0
+    },
+    {
+        "pozistion": "e2",
+        "stone": 0
+    },
+    {
+        "pozistion": "e3",
+        "stone": 0
+    },
+    {
+        "pozistion": "e4",
+        "stone": 2
+    },
+    {
+        "pozistion": "e5",
+        "stone": 1
+    },
+    {
+        "pozistion": "e6",
+        "stone": 0
+    },
+    {
+        "pozistion": "e7",
+        "stone": 0
+    },
+    {
+        "pozistion": "e8",
+        "stone": 0
+    },
+    {
+        "pozistion": "f1",
+        "stone": 0
+    },
+    {
+        "pozistion": "f2",
+        "stone": 0
+    },
+    {
+        "pozistion": "f3",
+        "stone": 0
+    },
+    {
+        "pozistion": "f4",
+        "stone": 0
+    },
+    {
+        "pozistion": "f5",
+        "stone": 0
+    },
+    {
+        "pozistion": "f6",
+        "stone": 0
+    },
+    {
+        "pozistion": "f7",
+        "stone": 0
+    },
+    {
+        "pozistion": "f8",
+        "stone": 0
+    },
+    {
+        "pozistion": "g1",
+        "stone": 0
+    },
+    {
+        "pozistion": "g2",
+        "stone": 0
+    },
+    {
+        "pozistion": "g3",
+        "stone": 0
+    },
+    {
+        "pozistion": "g4",
+        "stone": 0
+    },
+    {
+        "pozistion": "g5",
+        "stone": 0
+    },
+    {
+        "pozistion": "g6",
+        "stone": 0
+    },
+    {
+        "pozistion": "g7",
+        "stone": 0
+    },
+    {
+        "pozistion": "g8",
+        "stone": 0
+    },
+    {
+        "pozistion": "h1",
+        "stone": 0
+    },
+    {
+        "pozistion": "h2",
+        "stone": 0
+    },
+    {
+        "pozistion": "h3",
+        "stone": 0
+    },
+    {
+        "pozistion": "h4",
+        "stone": 0
+    },
+    {
+        "pozistion": "h5",
+        "stone": 0
+    },
+    {
+        "pozistion": "h6",
+        "stone": 0
+    },
+    {
+        "pozistion": "h7",
+        "stone": 0
+    },
+    {
+        "pozistion": "h8",
+        "stone": 0
+    }
+]

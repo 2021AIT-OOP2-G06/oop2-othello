@@ -1,21 +1,23 @@
-td{
-  background-color: green;
-  width: 60px;
-  height: 60px;
-  font-size: 40px;
-  text-align:center;
-  border-color: black;
+td {
+    background-color: green;
+    width: 60px;
+    height: 60px;
+    font-size: 40px;
+    text-align: center;
+    border-color: black;
 }
 
-#notice{
-  font-size: 20px;
+#notice {
+    font-size: 20px;
 }
 
-table , td, th {
-border: 1px solid black;
+table,
+td,
+th {
+    border: 1px solid black;
 }
 
-#reverse{
-  font-size: 20px;
-  text-align:right;
+#reverse {
+    font-size: 20px;
+    text-align: right;
 }

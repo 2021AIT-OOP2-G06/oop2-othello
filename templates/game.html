@@ -327,8 +327,25 @@
                 contentType: 'application/json;charset=UTF-8',
                 success: function(response) {
                     if (response.mensaje !== "OK") {
-                        alert(response.mensaje)
+                        if (response.mensaje == "PASS")
+                            alert("もう一度あなたの番です")
+                        else{
+                            alert(response.mensaje)
+                        }
                     }
+                    if (response.mensaje == "NG"){
+                        if (player == 1){
+                            player = 2
+                        }else{
+                            player = 1
+                        }
+                    }
+                    if(response.mensaje == "PASS")
+                    if (player == 1){
+                            player = 2
+                        }else{
+                            player = 1
+                        }
                     grid = response.grid;
                     ScoreWh = 0;
                     ScoreBla = 0;

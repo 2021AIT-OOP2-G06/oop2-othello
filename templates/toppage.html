@@ -96,8 +96,14 @@
         this.level=selectLevel;
     }
 
-    document.getElementById("hard").onclick = changelevel("hard");
-    document.getElementById("normal").onclick = changelevel("normal");
-    document.getElementById("easy").onclick = changelevel("easy");
+    document.getElementById("hard").onclick = function(){
+        changelevel("hard");
+    }
+    document.getElementById("normal").onclick = function(){
+        changelevel("normal");
+    }
+    document.getElementById("easy").onclick = function(){
+        changelevel("easy");
+    }
     document.getElementsByClassName("battle").onclick = gameStart;
 </script>

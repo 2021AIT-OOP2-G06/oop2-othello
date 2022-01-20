@@ -11,14 +11,11 @@
 </head>
 
 <body>
-    {%block content %}
-    {% endblock %}
+    {%block content %} {% endblock %}
 
     <div align="center">
         &emsp;&emsp;&emsp;
-        <label class="titulo-label" id="turn">Othello</label><br><br><br>
-
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <label class="titulo-label" id="turn">Othello</label><br><br><br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         <label>色</label>
         <select id="selectPlayer" onclick="selectPlayer()">
             <option value="1">白</option>
@@ -26,14 +23,12 @@
         </select>
 
         <label>ロード</label>
-        <input type="button" value="Click" onclick="start()"><br><br>
-
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <input type="button" value="Click" onclick="start()"><br><br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         <label>勝敗</label>
-        <input type="button" value="Click" onclick="ganador()">&emsp;&emsp;
+        <input type="button" value="Click" onclick="winner()">&emsp;&emsp;
 
         <label>リセット</label>
-        <input type="button" value="Click" onclick="reiniciar()">
+        <input type="button" value="Click" onclick="reboot()">
 
 
     </div>
@@ -270,7 +265,8 @@
         [0, 0, 0, 2, 1, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0]];
+        [0, 0, 0, 0, 0, 0, 0, 0]
+    ];
 
     var grid = [];
     var player = 1;
@@ -282,24 +278,24 @@
         player = parseInt(select);
         if (player == 1) {
             document.getElementById("turn").innerHTML = "ターン: 白";
-        }
-        else {
+        } else {
             document.getElementById("turn").innerHTML = "ターン: 黒";
         }
     }
+
     function start() {
-        $(document).ready(function () {
+        $(document).ready(function() {
             $.ajax({
                 url: '/start',
                 data: "",
                 type: 'POST',
                 dataType: "json",
                 contentType: 'application/json;charset=UTF-8',
-                success: function (response) {
+                success: function(response) {
                     grid = response.grid;
                     refreshGrid();
                 },
-                error: function (error) {
+                error: function(error) {
                     console.log(error);
                 }
             });
@@ -307,14 +303,17 @@
     }
 
     function selectCell(row, col, id) {
-        $(document).ready(function () {
-            var data = { row: row, col: col, player: player }
+        $(document).ready(function() {
+            var data = {
+                row: row,
+                col: col,
+                player: player
+            }
             if (player != null) {
                 if (player == 1) {
                     player = 2;
                     document.getElementById("turn").innerHTML = "ターン: 白";
-                }
-                else {
+                } else {
                     player = 1;
                     document.getElementById("turn").innerHTML = "ターン: 黒";
                 }
@@ -326,7 +325,7 @@
                 type: 'POST',
                 dataType: "json",
                 contentType: 'application/json;charset=UTF-8',
-                success: function (response) {
+                success: function(response) {
                     if (response.mensaje !== "OK") {
                         alert(response.mensaje)
                     }
@@ -335,7 +334,7 @@
                     ScoreBla = 0;
                     refreshGrid();
                 },
-                error: function (error) {
+                error: function(error) {
                     console.log(error);
                 }
             });
@@ -343,7 +342,7 @@
     }
 
     function refreshGrid() {
-        if (matrizLlena() != true) {
+        if (arrayFull() != true) {
             for (var row = 0; row < grid.length; row++) {
                 for (var col = 0; col < grid.length; col++) {
                     if (grid[row][col] == 0) {
@@ -361,11 +360,10 @@
                     }
                 }
             }
-        }
-        else {
+        } else {
             for (var row = 0; row < grid.length; row++) {
                 for (var col = 0; col < grid.length; col++) {
-                    //si la celda es cero: pintece de verde
+                    //セルが0の場合：緑色に塗られる
                     if (grid[row][col] == 0) {
                         document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#069685";
                     }
@@ -384,7 +382,7 @@
         }
     }
 
-    function matrizLlena() {
+    function arrayFull() {
         for (var row = 0; row < grid.length; row++) {
             for (var col = 0; col < grid.length; col++) {
                 if (grid[row][col] == 0) {
@@ -395,48 +393,47 @@
         return true;
     }
 
-    function reiniciar() {
+    function reboot() {
         ScoreWh = 0;
         ScoreBla = 0;
         reset();
         alert("リセットします");
     }
 
-    function ganador() {
+    function winner() {
         if (ScoreWh > ScoreBla) {
             alert("白");
             reset();
-        }
-        else if (ScoreWh < ScoreBla) {
+        } else if (ScoreWh < ScoreBla) {
             alert("黒");
             reset();
-        }
-        else {
+        } else {
             alert("引き分け");
             reset();
         }
     }
 
     function reset() {
-        $(document).ready(function () {
-            var data = { respaldo: respaldo }
+        $(document).ready(function() {
+            var data = {
+                respaldo: respaldo
+            }
             $.ajax({
                 url: '/reset',
                 data: JSON.stringify(data),
                 type: 'POST',
                 dataType: "json",
                 contentType: 'application/json;charset=UTF-8',
-                success: function (response) {
+                success: function(response) {
                     grid = response.grid;
                     refreshGrid();
                 },
-                error: function (error) {
+                error: function(error) {
                     console.log(error);
                 }
             });
         });
     }
-
 </script>
 
 </html>

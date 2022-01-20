@@ -5,11 +5,15 @@ import othello
 app = Flask(__name__)
 
 # http://127.0.0.1:5000/
-@app.route('/')
+@app.route('/othello')
 def index():
-    title = 'Othello Angelo'
+    title = 'Othello'
     score = 'Score'
     return render_template('index.html', title= title, score = score)
+
+@app.route('/')
+def top():
+    return render_template('toppage.html')
 
 @app.route('/getPosition', methods=['POST'])
 def getPosition():

@@ -101,13 +101,15 @@
   <!--<script type="text/javascript" src="../static/index.js" defer></script>-->
 
   <script>
-    data=$tag_tr.rowIndex + ", " + $tag_td.cellIndex;
-    fetch('/action', {method: 'POST', body: data,})
-    .then(function (response) {
-        response.json().then((data) => {
+    function data_response(x,y){
+        data=x + ", " + y;
+        fetch('/action', {method: 'POST', body: data,})
+        .then(function (response) {
+            response.json().then((data) => {
 
-        })
-    });
+            })
+        });
+    }
 
     var turn = 0
     var user1_data = document.getElementsByClassName("user1")
@@ -126,6 +128,7 @@
         $tag_td = $(this)[0];
         $tag_tr = $(this).parent()[0];
         console.log("%s, %s", $tag_tr.rowIndex, $tag_td.cellIndex);
+        data_response($tag_tr.rowIndex,$tag_td.cellIndex);
 
         var change_tbl = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
         var cell_name = change_tbl[$tag_tr.rowIndex].concat($tag_td.cellIndex+1)

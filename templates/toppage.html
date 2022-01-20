@@ -11,16 +11,23 @@
 </head>
 
 <p>TOPページ</p>
+<!--
+<h1>名前を入力</h1>
+<div class="namebox">
+    <input type="text" id="name"><button>登録</button>
+</div>
+-->
+
+<h1>手動でオセロ</h1>
 <div class="button">
-    <a href="#" class="battle" onclick="gameStart()">対戦する</a>
+    <a href="#" class="battle">プレイ</a>
 </div>
 
 <h1>†CPU BATTLE†</h1>
-
 <div class="button">
-    <button class="cp_btn" id="hard">強い</a>
-    <button class="cp_btn" id="normal">普通</a>
-    <button class="cp_btn" id="easy">弱い</a>
+    <button class="cp_btn" id="hard">強い</button>
+    <button class="cp_btn" id="normal">普通</button>
+    <button class="cp_btn" id="easy">弱い</button>
 </div>
 
 <style>
@@ -28,6 +35,11 @@
         background-image: url(../static/adpDSC_1353-.jpg);
         background-size: cover;
     }
+    /*
+    div.namebox{
+        text-align: center;
+    }
+    */
     p {
         font-size: 30pt;
         text-align: center;
@@ -35,7 +47,7 @@
 
     h1 {
         font-size: 30pt;
-        margin-top: 2.5cm;
+        margin-top: 1cm;
         text-align: center;
     }
 
@@ -92,7 +104,7 @@
 
 <script>
     var /*level="normal",*/url="game.html";
-    
+
     /*
     function gameStart() {
         document.location.href = url + "?level=" + encodeURIComponent(level);

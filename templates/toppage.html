@@ -24,6 +24,10 @@
 </div>
 
 <style>
+    html{
+        background-image: url(../static/adpDSC_1353-.jpg);
+        background-size: cover;  
+    }
     p {
         font-size: 30pt;
         text-align: center;
@@ -87,7 +91,8 @@
 </style>
 
 <script>
-    var level="normal",url="game.html";
+    var /*level="normal",*/url="game.html";
+    /*
     function gameStart() {
         document.location.href = url + "?level=" + encodeURIComponent(level);
     }
@@ -95,7 +100,15 @@
         console.log(selectLevel);  //デバック用
         this.level=selectLevel;
     }
+    */
+    function gameStart() {
+        document.location.href = url;
+    }
+    function gameStartVScpu(level) {
+        document.location.href = url + "?level=" + encodeURIComponent(level);
+    }
 
+    /*
     document.getElementById("hard").onclick = function(){
         changelevel("hard");
     }
@@ -105,6 +118,16 @@
     document.getElementById("easy").onclick = function(){
         changelevel("easy");
     }
-    
+    */
+
     document.getElementsByClassName("battle").onclick = gameStart;
+    document.getElementsByClassName("cp_btn")[0].onclick = function(){
+        gameStartVScpu("hard");
+    };
+    document.getElementsByClassName("cp_btn")[1].onclick = function(){
+        gameStartVScpu("normal");
+    };
+    document.getElementsByClassName("cp_btn")[0].onclick = function(){
+        gameStartVScpu("easy");
+    };
 </script>

@@ -12,15 +12,15 @@
 
 <p>TOPページ</p>
 <div class="button">
-    <a href="#" class="battle">対戦する</a>
+    <a href="#" class="battle" onclick="gameStart()">対戦する</a>
 </div>
 
 <h1>†CPU BATTLE†</h1>
 
 <div class="button">
-    <a href="#" class="cp_btn">強い</a>
-    <a href="#" class="cp_btn">普通</a>
-    <a href="#" class="cp_btn">弱い</a>
+    <button class="cp_btn" id="hard">強い</a>
+    <button class="cp_btn" id="normal">普通</a>
+    <button class="cp_btn" id="easy">弱い</a>
 </div>
 
 <style>
@@ -28,13 +28,13 @@
         font-size: 30pt;
         text-align: center;
     }
-    
+
     h1 {
         font-size: 30pt;
         margin-top: 2.5cm;
         text-align: center;
     }
-    
+
     a.battle {
         position: relative;
         text-align: center;
@@ -52,14 +52,14 @@
         border-radius: 4px;
         box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
     }
-    
+
     a.battle:active {
         border-bottom: 2px solid #808080;
         box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
         color: red;
     }
-    
-    a.cp_btn {
+
+    button.cp_btn {
         /*押す前の色設定*/
         position: relative;
         text-align: center;
@@ -78,8 +78,8 @@
         box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
     }
     /*押した時の色設定*/
-    
-    a.cp_btn:active {
+
+    button.cp_btn:active {
         border-bottom: 2px solid #808080;
         box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
         color: #000000;
@@ -87,5 +87,17 @@
 </style>
 
 <script>
-    /*紐付け用*/
+    var level="normal",url="game.html";
+    function gameStart() {
+        document.location.href = url + "?level=" + encodeURIComponent(level);
+    }
+    function changelevel(selectLevel){
+        console.log(selectLevel);  //デバック用
+        this.level=selectLevel;
+    }
+
+    document.getElementById("hard").onclick = changelevel("hard");
+    document.getElementById("normal").onclick = changelevel("normal");
+    document.getElementById("easy").onclick = changelevel("easy");
+    document.getElementsByClassName("battle").onclick = gameStart;
 </script>

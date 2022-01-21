@@ -3,18 +3,18 @@ import re
 import numpy as np
 
 # csvの読み込み
-df = pd.read_csv("wthor.csv")
+# df = pd.read_csv("wthor.csv")
 
 # ヘッダ行の削除
-df = df.drop(index=df[df["transcript"].str.contains('transcript')].index)
+# df = df.drop(index=df[df["transcript"].str.contains('transcript')].index)
 
 
 # 正規表現を使って2文字ずつ切り出す
-transcripts_raw = df["transcript"].str.extractall('(..)')
+# transcripts_raw = df["transcript"].str.extractall('(..)')
 
 # Indexを再構成して、1行1手の表にする
-transcripts_df = transcripts_raw.reset_index().rename(
-    columns={"level_0": "tournamentId", "match": "move_no", 0: "move_str"})
+# transcripts_df = transcripts_raw.reset_index().rename(
+#     columns={"level_0": "tournamentId", "match": "move_no", 0: "move_str"})
 
 # 列の値を数字に変換するdictonaryを作る
 
@@ -47,8 +47,8 @@ def convert_move(v):
     return np.array([l - 1, r - 1], dtype='int8')
 
 
-transcripts_df["move"] = transcripts_df.apply(
-    lambda x: convert_move(x["move_str"]), axis=1)
+# transcripts_df["move"] = transcripts_df.apply(
+#     lambda x: convert_move(x["move_str"]), axis=1)
 
 # 盤面の中にあるかどうかを確認する
 
@@ -204,7 +204,7 @@ def process_tournament(df):
 
 
 # 棋譜データを学習データに展開する
-transcripts_df.apply(lambda x: process_tournament(x), axis=1)
+# transcripts_df.apply(lambda x: process_tournament(x), axis=1)
 
 x_train = np.concatenate([boards_black, boards_white])
 y_train = np.concatenate([moves_black, moves_white])

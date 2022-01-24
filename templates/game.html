@@ -30,7 +30,7 @@
         <label>リセット</label>
         <input type="button" value="Click" onclick="reboot()"><br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         <label>あなたの名前</label>
-        <input type="text" maxlength="10" size="20">
+        <input type="text" id="myName" maxlength="10" size="20">
 
     </div>
 
@@ -295,6 +295,8 @@
                 contentType: 'application/json;charset=UTF-8',
                 success: function(response) {
                     grid = response.grid;
+                    myNameBox=document.getElementById("myName");
+                    myNameBox.disabled=true;
                     refreshGrid();
                 },
                 error: function(error) {
@@ -314,7 +316,7 @@
             if (player != null) {
                 if (player == 1) {
                     player = 2;
-                    document.getElementById("turn").innerHTML = "ターン: 白";
+                    document.getElementById("turn").innerHTML = "ターン:"+document.getElementById('myName').value;
                 } else {
                     player = 1;
                     document.getElementById("turn").innerHTML = "ターン: 黒";
@@ -370,7 +372,7 @@
                     if (grid[row][col] == 1) {
                         document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#FFFFFF";
                         ScoreWh = ScoreWh + 1;
-                        document.getElementById("scoreWhite").innerHTML = "白: " + ScoreWh.toString();
+                        document.getElementById("scoreWhite").innerHTML = document.getElementById('myName').value+":"+ ScoreWh.toString();
                     }
                     if (grid[row][col] == 2) {
                         document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#000000";

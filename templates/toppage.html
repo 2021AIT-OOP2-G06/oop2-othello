@@ -130,7 +130,14 @@
     }
     */
 
-    document.getElementsByClassName("battle")[0].onclick = gameStart;
+    document.getElementsByClassName("battle")[0].onclick = function(){
+        if(document.getElementById("your_name").value){
+            gameStart();
+        }else{
+            alert("名前を入力してください");
+        }
+        
+    };
     document.getElementsByClassName("cp_btn")[0].onclick = function(){
         gameStartVScpu("hard");
     };

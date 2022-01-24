@@ -28,8 +28,7 @@
         <input type="button" value="Click" onclick="winner()">&emsp;&emsp;
 
         <label>リセット</label>
-        <input type="button" value="Click" onclick="reboot()">
-
+        <input type="button" value="Click" onclick="reboot()"><br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
     </div>
 
@@ -255,6 +254,7 @@
             </td>
         </tr>
     </table>
+    
 </body>
 <script>
     var respaldo = [
@@ -293,6 +293,7 @@
                 contentType: 'application/json;charset=UTF-8',
                 success: function(response) {
                     grid = response.grid;
+                    
                     refreshGrid();
                 },
                 error: function(error) {
@@ -309,10 +310,12 @@
                 col: col,
                 player: player
             }
+            var query = location.search;
+            var value = query.split('=');
             if (player != null) {
                 if (player == 1) {
                     player = 2;
-                    document.getElementById("turn").innerHTML = "ターン:くろ";
+                    document.getElementById("turn").innerHTML = "ターン:"+ decodeURIComponent(value[1]);
                 } else {
                     player = 1;
                     document.getElementById("turn").innerHTML = "ターン:しろ";
@@ -359,6 +362,8 @@
     }
 
     function refreshGrid() {
+        var query = location.search;
+        var value = query.split('=');
         if (arrayFull() != true) {
             for (var row = 0; row < grid.length; row++) {
                 for (var col = 0; col < grid.length; col++) {
@@ -368,7 +373,7 @@
                     if (grid[row][col] == 1) {
                         document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#FFFFFF";
                         ScoreWh = ScoreWh + 1;
-                        document.getElementById("scoreWhite").innerHTML = "白: " + ScoreWh.toString();
+                        document.getElementById("scoreWhite").innerHTML = decodeURIComponent(value[1]) + ":"+ ScoreWh.toString();
                     }
                     if (grid[row][col] == 2) {
                         document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#000000";

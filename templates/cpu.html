@@ -284,7 +284,7 @@
         }
     }
 
-    function start() {
+    function cpustart() {
         $(document).ready(function () {
             $.ajax({
                 url: '/start',
@@ -312,7 +312,7 @@
             }
 
             $.ajax({
-                url: '/getPosition',
+                url: '/cpugetPosition',
                 data: JSON.stringify(data),
                 type: 'POST',
                 dataType: "json",
@@ -435,7 +435,7 @@
         }
     }
 
-    function reset() {
+    function cpureset() {
         $(document).ready(function () {
             var data = {
                 respaldo: respaldo

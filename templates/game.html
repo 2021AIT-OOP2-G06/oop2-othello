@@ -326,21 +326,21 @@
                 dataType: "json",
                 contentType: 'application/json;charset=UTF-8',
                 success: function(response) {
-                    if (response.mensaje !== "OK") {
-                        if (response.mensaje == "PASS")
+                    if (response.message !== "OK") {
+                        if (response.message == "PASS")
                             alert("もう一度あなたの番です")
                         else{
-                            alert(response.mensaje)
+                            alert(response.message)
                         }
                     }
-                    if (response.mensaje == "NG"){
+                    if (response.message == "NG"){
                         if (player == 1){
                             player = 2
                         }else{
                             player = 1
                         }
                     }
-                    if(response.mensaje == "PASS")
+                    if(response.message == "PASS")
                     if (player == 1){
                             player = 2
                         }else{

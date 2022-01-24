@@ -10,14 +10,10 @@
     <title>ボタン例(変更可)</title>
 </head>
 
-<p>TOPページ</p>
-<!--
-<h1>名前を入力</h1>
-<div class="namebox">
-    <input type="text" id="name"><button>登録</button>
-</div>
--->
-
+<p>TOPページ<br>
+<label for="your_name">名前: </label>
+<input type="text" id="your_name" size="20" style="width: 200px; height: 40px;" maxlength="10" name="name">
+</p>
 <h1>手動でオセロ</h1>
 <div class="button">
     <a href="#" class="battle">プレイ</a>
@@ -116,7 +112,7 @@
     */
 
     function gameStart() {
-        document.location.href = url;
+        document.location.href = url + "?your_name=" + encodeURIComponent(document.getElementById("your_name").value);
     }
     function gameStartVScpu(level) {
         document.location.href = url + "?level=" + encodeURIComponent(level);
@@ -134,7 +130,14 @@
     }
     */
 
-    document.getElementsByClassName("battle")[0].onclick = gameStart;
+    document.getElementsByClassName("battle")[0].onclick = function(){
+        if(document.getElementById("your_name").value){
+            gameStart();
+        }else{
+            alert("名前を入力してください");
+        }
+        
+    };
     document.getElementsByClassName("cp_btn")[0].onclick = function(){
         gameStartVScpu("hard");
     };

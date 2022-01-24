@@ -37,8 +37,8 @@
         <tr>
             <td align="right">
                 <h2 id="puntaje" class="puntaje">{{score}}</h2>
-                <h4 id="scoreBlack" class="score">白:</h4>
-                <h4 id="scoreWhite" class="score">黒:</h4>
+                <h4 id="scoreBlack" class="score">黒:</h4>
+                <h4 id="scoreWhite" class="score">白:</h4>
             </td>
             <td></td>
             <td>
@@ -277,9 +277,9 @@
         var select = document.getElementById("selectPlayer").value;
         player = parseInt(select);
         if (player == 1) {
-            document.getElementById("turn").innerHTML = "ターン: 白";
-        } else {
             document.getElementById("turn").innerHTML = "ターン: 黒";
+        } else {
+            document.getElementById("turn").innerHTML = "ターン: 白";
         }
     }
 
@@ -312,10 +312,10 @@
             if (player != null) {
                 if (player == 1) {
                     player = 2;
-                    document.getElementById("turn").innerHTML = "ターン: 白";
+                    document.getElementById("turn").innerHTML = "ターン:くろ";
                 } else {
                     player = 1;
-                    document.getElementById("turn").innerHTML = "ターン: 黒";
+                    document.getElementById("turn").innerHTML = "ターン:しろ";
                 }
             }
 

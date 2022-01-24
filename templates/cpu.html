@@ -15,7 +15,8 @@
 
     <div align="center">
         &emsp;&emsp;&emsp;
-        <label class="titulo-label" id="turn">Othello</label><br><br><br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <label class="titulo-label" id="turn">Othello</label><br><br><br>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         <label>色</label>
         <select id="selectPlayer" onclick="selectPlayer()">
             <option value="1">白</option>
@@ -28,7 +29,8 @@
         <input type="button" value="Click" onclick="winner()">&emsp;&emsp;
 
         <label>リセット</label>
-        <input type="button" value="Click" onclick="reboot()"><br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <input type="button" value="Click" onclick="reboot()">
+
 
     </div>
 
@@ -254,7 +256,6 @@
             </td>
         </tr>
     </table>
-    
 </body>
 <script>
     var respaldo = [
@@ -283,20 +284,19 @@
         }
     }
 
-    function start() {
-        $(document).ready(function() {
+    function cpustart() {
+        $(document).ready(function () {
             $.ajax({
                 url: '/start',
                 data: "",
                 type: 'POST',
                 dataType: "json",
                 contentType: 'application/json;charset=UTF-8',
-                success: function(response) {
+                success: function (response) {
                     grid = response.grid;
-                    
                     refreshGrid();
                 },
-                error: function(error) {
+                error: function (error) {
                     console.log(error);
                 }
             });
@@ -304,57 +304,59 @@
     }
 
     function selectCell(row, col, id) {
-        $(document).ready(function() {
+        $(document).ready(function () {
             var data = {
                 row: row,
                 col: col,
                 player: player
             }
-            var query = location.search;
-            var value = query.split('=');
-            if (player != null) {
-                if (player == 1) {
-                    player = 2;
-                    document.getElementById("turn").innerHTML = "ターン:"+ decodeURIComponent(value[1]);
-                } else {
-                    player = 1;
-                    document.getElementById("turn").innerHTML = "ターン:しろ";
-                }
-            }
 
             $.ajax({
-                url: '/getPosition',
+                url: '/cpugetPosition',
                 data: JSON.stringify(data),
                 type: 'POST',
                 dataType: "json",
                 contentType: 'application/json;charset=UTF-8',
-                success: function(response) {
-                    if (response.message !== "OK") {
+                success: function (response) {
+                    console.log(response.message)
+                    if (response.message != "OK") {
                         if (response.message == "PASS")
                             alert("もう一度あなたの番です")
-                        else{
+                        else {
                             alert(response.message)
                         }
                     }
-                    if (response.message == "NG"){
-                        if (player == 1){
+                    if (response.message == "NG") {
+                        if (player == 1) {
                             player = 2
-                        }else{
+                        } else {
                             player = 1
                         }
                     }
-                    if(response.message == "PASS")
-                    if (player == 1){
+                    if (response.message == "PASS"){
+                        if (player == 1) {
                             player = 2
-                        }else{
+                        } else {
                             player = 1
                         }
+                    }
+
                     grid = response.grid;
                     ScoreWh = 0;
                     ScoreBla = 0;
                     refreshGrid();
+
+                    //ターンの切り替え
+                    if (player == 1) {
+                        player = 2;
+                        document.getElementById("turn").innerHTML = "ターン:くろ";
+                    } else {
+                        player = 1;
+                        document.getElementById("turn").innerHTML = "ターン:しろ";
+                    }
+                    player = 1;
                 },
-                error: function(error) {
+                error: function (error) {
                     console.log(error);
                 }
             });
@@ -362,8 +364,6 @@
     }
 
     function refreshGrid() {
-        var query = location.search;
-        var value = query.split('=');
         if (arrayFull() != true) {
             for (var row = 0; row < grid.length; row++) {
                 for (var col = 0; col < grid.length; col++) {
@@ -373,7 +373,7 @@
                     if (grid[row][col] == 1) {
                         document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#FFFFFF";
                         ScoreWh = ScoreWh + 1;
-                        document.getElementById("scoreWhite").innerHTML = decodeURIComponent(value[1]) + ":"+ ScoreWh.toString();
+                        document.getElementById("scoreWhite").innerHTML = "白: " + ScoreWh.toString();
                     }
                     if (grid[row][col] == 2) {
                         document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#000000";
@@ -435,8 +435,8 @@
         }
     }
 
-    function reset() {
-        $(document).ready(function() {
+    function cpureset() {
+        $(document).ready(function () {
             var data = {
                 respaldo: respaldo
             }
@@ -446,11 +446,11 @@
                 type: 'POST',
                 dataType: "json",
                 contentType: 'application/json;charset=UTF-8',
-                success: function(response) {
+                success: function (response) {
                     grid = response.grid;
                     refreshGrid();
                 },
-                error: function(error) {
+                error: function (error) {
                     console.log(error);
                 }
             });

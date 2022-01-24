@@ -5,7 +5,7 @@
 #grid 8x8
 
 from tabnanny import check
-import random
+import numpy as np
 
 grid = [
         [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -16,7 +16,8 @@ grid = [
         [9, 0, 0, 0, 2, 1, 0, 0, 0, 9],
         [9, 0, 0, 0, 0, 0, 0, 0, 0, 9],
         [9, 0, 0, 0, 0, 0, 0, 0, 0, 9],
-        [9, 0, 0, 0, 0, 0, 0, 0, 0, 9]
+        [9, 0, 0, 0, 0, 0, 0, 0, 0, 9],
+        [9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
     ]
 change_check = [-1, 0, 1]
 
@@ -37,14 +38,19 @@ def selectCell(row,col,player):
         #return "OK"
     #else:
         #return "ok"
+    
+    #ここにputの処理を書くと動くかも？
+
+    rng = np.random.default_rng(np.random.randint(0,1))
 
     while(True):
-        randx = random.randint(0, 7)
-        randy = random.randint(0, 7)
+        randx = int(rng.integers(low=0, high=7, size=1))
+        randy = int(rng.integers(low=0, high=7, size=1))
         print('random = {randx} and {randy}'.format(randx=randx,randy=randy))
-        if CPUCheck(randx,randy,2):
-            Overturn(randx,randy,2)
-            break
+        if ((grid[randx][randy]==0)):
+            if CPUCheck(randx,randy,2):
+                Overturn(randx,randy,2)
+                break
     
 
     next_player = 3 - player
@@ -96,6 +102,10 @@ def Overturn(x,y,player):
                     elif searchStone == 0:
                         break
 
+                    #はし
+                    elif searchStone == 9:
+                        break
+
                     # 相手の石が見つかったとき
                     elif searchStone != player:
                         #返せる可能性がある
@@ -104,6 +114,7 @@ def Overturn(x,y,player):
                     
                 else:
                     break
+
         # x座標とy座標を格納
     check_x = overturn_x
     check_y = overturn_y
@@ -112,8 +123,7 @@ def Overturn(x,y,player):
         for j in range(len(overturn_y[i])):
                 # print(self.overturn_x[i][j])
                 # print(self.overturn_y[i][j])
-            grid[i][[j]] = player
-            # print(player)
+            grid[check_y[i][j]][check_x[i][j]] = player
     grid[y][x] = player
     # print(overturn_x)
     # print(overturn_y)
@@ -149,31 +159,39 @@ def Check( x, y, player):
                     # x座標とy座標の石を直線的に探す
                 line_x = x + (check_x * dist)
                 line_y = y + (check_y * dist)
-                    # rxとryに石はあるのかの判定と、ひっくり返せるかの判定
-                if 0 <= line_x < 8 and 0 <= line_y < 8:
-                    searchStone = grid[int(line_y)][int(line_x)]
-                        # 自分の石が見つかったとき
+                # 探索先に石があるとき、ひっくり返せるかの判定
+                if 0 <= line_x < 8 and 0 <= line_y < 8:#端に到達したら終わり
+                    searchStone = grid[int(line_y)][int(line_x)]#探索する石(null,自分，相手のどれかが入っている)
+                    
+                    # 自分の石が見つかったとき
                     if searchStone == player:
-                        if tmpx != [] and tmpy != []:
-                                # print("追加しました")
+                        if tmpx != [] and tmpy != []: #返せる石が間にある
+                            # print("追加しました")
                             overturn_x.append(tmpx)
                             overturn_y.append(tmpy)
                             break
                         else:
                             break
-                        # 相手の石が見つかったとき
+                    #null
+                    elif searchStone == 0:
+                        break
+
+                    #はし
+                    elif searchStone == 9:
+                        break
+
+                    # 相手の石が見つかったとき
                     elif searchStone != player:
-                        if searchStone == 0:
-                            break
-                        else:
-                            tmpx.append(line_x)
-                            tmpy.append(line_y)
+                        #返せる可能性がある
+                        tmpx.append(line_x)
+                        tmpy.append(line_y)
+                    
                 else:
                     break
         
         # 来た座標に置いた時、石をひっくり返せるかどうか
     for i in range(len(overturn_x)):
-        if overturn_x[i] != 0 or 9:
+        if overturn_x[i] != 0:
             #print("ここにおけます")
             #grid[y][x] = player
             return False
@@ -210,28 +228,36 @@ def Put(player):
                 # 直線の石を調べる
                     while(True):
                         dist += 1
-                    # x座標とy座標の石を直線的に探す
+                        # x座標とy座標の石を直線的に探す
                         line_x = x + (check_x * dist)
                         line_y = y + (check_y * dist)
-                    # rxとryに石はあるのかの判定と、ひっくり返せるかの判定
-                        if 0 <= line_x < 8 and 0 <= line_y < 8:
-                            searchStone = grid[int(line_y)][int(line_x)]
-                        # 自分の石が見つかったとき
+                        # 探索先に石があるとき、ひっくり返せるかの判定
+                        if 0 <= line_x < 8 and 0 <= line_y < 8:#端に到達したら終わり
+                            searchStone = grid[int(line_y)][int(line_x)]#探索する石(null,自分，相手のどれかが入っている)
+                            
+                            # 自分の石が見つかったとき
                             if searchStone == player:
-                                if tmpx != [] and tmpy != []:
-                                # print("追加しました")
+                                if tmpx != [] and tmpy != []: #返せる石が間にある
+                                    # print("追加しました")
                                     overturn_x.append(tmpx)
                                     overturn_y.append(tmpy)
                                     break
                                 else:
                                     break
-                        # 相手の石が見つかったとき
+                            #null
+                            elif searchStone == 0:
+                                break
+
+                            #はし
+                            elif searchStone == 9:
+                                break
+
+                            # 相手の石が見つかったとき
                             elif searchStone != player:
-                                if searchStone == 0:
-                                    break
-                                else:
-                                    tmpx.append(line_x)
-                                    tmpy.append(line_y)
+                                #返せる可能性がある
+                                tmpx.append(line_x)
+                                tmpy.append(line_y)
+                            
                         else:
                             break
 
@@ -275,33 +301,39 @@ def CPUCheck(x,y,player):
                 line_x = x + (check_x * dist)
                 line_y = y + (check_y * dist)
                     # rxとryに石はあるのかの判定と、ひっくり返せるかの判定
-                if 0 <= line_x < 8 and 0 <= line_y < 8:
-                    searchStone = grid[int(line_y)][int(line_x)]
-                    
+                # 探索先に石があるとき、ひっくり返せるかの判定
+                if 0 <= line_x < 8 and 0 <= line_y < 8:#端に到達したら終わり
+                    searchStone = grid[int(line_y)][int(line_x)]#探索する石(null,自分，相手のどれかが入っている)
+                    print(searchStone)
                     # 自分の石が見つかったとき
                     if searchStone == player:
-                        if tmpx != [] and tmpy != []:
+                        if tmpx != [] and tmpy != []: #返せる石が間にある
                             # print("追加しました")
                             overturn_x.append(tmpx)
                             overturn_y.append(tmpy)
-                            
                             break
                         else:
                             break
-                        
+                    #null
+                    elif searchStone == 0:
+                        break
+
+                    #はし
+                    elif searchStone == 9:
+                        break
+
                     # 相手の石が見つかったとき
                     elif searchStone != player:
-                        if searchStone == 0:
-                            break
-                        else:
-                            tmpx.append(line_x)
-                            tmpy.append(line_y)
+                        #返せる可能性がある
+                        tmpx.append(line_x)
+                        tmpy.append(line_y)
+                    
                 else:
                     break
         
         # 来た座標に置いた時、石をひっくり返せるかどうか
     for i in range(len(overturn_x)):
-        if overturn_x[i] != 0 or 9:
+        if overturn_x[i] != 0:
             #print("ここにおけます")
             #grid[y][x] = player
             return True

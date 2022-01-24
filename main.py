@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 from othello import *
 import othello
+from cpu import *
+import cpu
 
 app = Flask(__name__)
 
@@ -15,22 +17,27 @@ def index():
 def top():
     return render_template('toppage.html')
 
+@app.route('/cpu')
+def cpu_battle():
+    return render_template('cpu.html')
+
 @app.route('/getPosition', methods=['POST'])
 def getPosition():
     row = request.json['row']
     col = request.json['col']
     player = request.json['player']
-    sms = othello.selectCell(row, col, player)
-    return jsonify( grid=othello.grid, mensaje= sms)
+    sms = cpu.selectCell(row, col, 1)
+    print(sms)
+    return jsonify( grid=cpu.grid, message=sms)
 
 @app.route('/start', methods=['POST'])
 def start():
-    return jsonify( grid=othello.grid)
+    return jsonify( grid=cpu.grid)
 
 @app.route('/reset', methods=['POST'])
 def reset():
-    othello.grid = request.json['respaldo']
-    return jsonify( grid=othello.grid)
+    cpu.grid = request.json['respaldo']
+    return jsonify( grid=cpu.grid)
 
 if __name__ == '__main__':
     app.config['TEMPLATES_AUTO_RELOAD'] = True

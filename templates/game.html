@@ -22,8 +22,7 @@
             <option value="2">黒</option>
         </select>
 
-        <label>ロード</label>
-        <input type="button" value="Click" onclick="start()"><br><br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        
         <label>勝敗</label>
         <input type="button" value="Click" onclick="winner()">&emsp;&emsp;
 
@@ -315,7 +314,7 @@
             if (player != null) {
                 if (player == 1) {
                     player = 2;
-                    document.getElementById("turn").innerHTML = "ターン:"+ decodeURIComponent(value[1]);
+                    document.getElementById("turn").innerHTML = "ターン:"+ decodeURIComponent(value[2]);
                 } else {
                     player = 1;
                     document.getElementById("turn").innerHTML = "ターン: 黒";
@@ -373,7 +372,7 @@
                     if (grid[row][col] == 1) {
                         document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#FFFFFF";
                         ScoreWh = ScoreWh + 1;
-                        document.getElementById("scoreWhite").innerHTML = decodeURIComponent(value[1]) + ":"+ ScoreWh.toString();
+                        document.getElementById("scoreWhite").innerHTML = decodeURIComponent(value[2]) + ":"+ ScoreWh.toString();
                     }
                     if (grid[row][col] == 2) {
                         document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#000000";
@@ -456,6 +455,13 @@
             });
         });
     }
+
+
+    function loadFinished(){
+        start();
+    }
+
+    window.onload = loadFinished;
 </script>
 
 </html>

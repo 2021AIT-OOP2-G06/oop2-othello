@@ -17,13 +17,10 @@
         &emsp;&emsp;&emsp;
         <label class="titulo-label" id="turn">Othello</label><br><br><br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         <label>色</label>
-        <select id="selectPlayer" onclick="selectPlayer()">
-            <option value="1">白</option>
-            <option value="2">黒</option>
-        </select>
+        
+        
 
-        <label>ロード</label>
-        <input type="button" value="Click" onclick="start()"><br><br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        
         <label>勝敗</label>
         <input type="button" value="Click" onclick="winner()">&emsp;&emsp;
 
@@ -274,7 +271,9 @@
     var ScoreBla = 0;
 
     function selectPlayer() {
-        var select = document.getElementById("selectPlayer").value;
+        var query = location.search;
+        var value = query.split('=');
+        var select = decodeURIComponent(value[3]);
         player = parseInt(select);
         if (player == 1) {
             document.getElementById("turn").innerHTML = "ターン: 黒";
@@ -310,12 +309,11 @@
                 col: col,
                 player: player
             }
-            var query = location.search;
-            var value = query.split('=');
+            const searchParams = new URLSearchParams(window.location.search);
             if (player != null) {
                 if (player == 1) {
                     player = 2;
-                    document.getElementById("turn").innerHTML = "ターン:"+ decodeURIComponent(value[1]);
+                    document.getElementById("turn").innerHTML = "ターン:"+ searchParams.get('your_name');
                 } else {
                     player = 1;
                     document.getElementById("turn").innerHTML = "ターン:しろ";
@@ -362,8 +360,7 @@
     }
 
     function refreshGrid() {
-        var query = location.search;
-        var value = query.split('=');
+        const searchParams = new URLSearchParams(window.location.search);
         if (arrayFull() != true) {
             for (var row = 0; row < grid.length; row++) {
                 for (var col = 0; col < grid.length; col++) {
@@ -373,7 +370,7 @@
                     if (grid[row][col] == 1) {
                         document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#FFFFFF";
                         ScoreWh = ScoreWh + 1;
-                        document.getElementById("scoreWhite").innerHTML = decodeURIComponent(value[1]) + ":"+ ScoreWh.toString();
+                        document.getElementById("scoreWhite").innerHTML = searchParams.get('your_name') + ":"+ ScoreWh.toString();
                     }
                     if (grid[row][col] == 2) {
                         document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#000000";
@@ -456,6 +453,15 @@
             });
         });
     }
+
+
+    function loadFinished(){
+        const searchParams = new URLSearchParams(window.location.search);
+        selectPlayer();
+        start();
+    }
+
+    window.onload = loadFinished;
 </script>
 
 </html>

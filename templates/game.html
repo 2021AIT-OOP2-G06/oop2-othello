@@ -430,6 +430,7 @@
             alert("引き分け");
             reset();
         }
+        twitText();
     }
 
     function reset() {
@@ -454,6 +455,15 @@
         });
     }
 
+    function twitText() {
+            var s, url;
+            s = "オセロゲームで";
+            m = "駒獲得したよ!!"
+            play = "https://othello-pre.herokuapp.com/"
+            //投稿画面を開く
+            url = "http://twitter.com/share?url=" + encodeURIComponent(s + ScoreBla + m + "\n" + "君も遊んでみよう" + "\n" )  + (escape(play) + "\n") + ("&hashtags=オブジェクト演習");
+            window.open(url, "_blank", "width=600,height=300");
+        }
 
     function loadFinished(){
         const searchParams = new URLSearchParams(window.location.search);

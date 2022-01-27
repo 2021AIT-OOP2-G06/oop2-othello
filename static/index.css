@@ -1,21 +1,330 @@
-td{
-  background-color: green;
-  width: 60px;
-  height: 60px;
-  font-size: 40px;
-  text-align:center;
-  border-color: black;
+html {
+  background-image: url(../static/14479.png);
+  background-color: rgba(180, 255, 180, 0.5);
+  background-blend-mode: lighten;
+  background-size: cover;
+  background-position: left top;
 }
 
-#notice{
-  font-size: 20px;
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ccc;
+  flex-wrap: wrap;
+  /* align-items: center; */
 }
 
-table , td, th {
-border: 1px solid black;
+/*
+    div.namebox{
+        text-align: center;
+    }
+    */
+p {
+  font-size: 14pt;
+  padding-bottom:3%;
+  text-align: center;
+}
+body{
+  text-align: center;
 }
 
-#reverse{
-  font-size: 20px;
-  text-align:right;
+.heading07 {
+  position: relative;
+  padding-top: 10%;
+  padding-left: 15%;
+  text-align: center;
+  padding: 5%;
+  font-size: 80px;
+  font-family: Garamond;
+  color: rgb(33, 39, 33);
+}
+
+
+.heading07 span {
+  position: relative;
+  z-index: 2;
+}
+
+.heading07::before {
+  content: attr(data-en);
+  position: absolute;
+  transform: rotate(-5deg);
+  top: -20px;
+  left: 15%;
+  color: rgba(224, 66, 114, 0.6);
+  font-size: 80px;
+  font-weight: 400;
+  font-family: luxus-brut, cursive;
+  font-style: italic;
+}
+
+
+.cp_iptxt {
+	position: relative;
+  margin-bottom: 5%;
+	/* width: 80%;
+	margin: 40px 3%;
+  padding-left: 50%; */
+}
+.cp_iptxt input[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+}
+.ef input[type='text']:focus {
+	border: 1px solid #da3c41;
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+}
+
+/*ポップアップここから*/
+.popup_wrap input {
+  display: none;
+}
+
+.popup_overlay {
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.5s, transform 0s 0.5s;
+  transform: scale(0);
+}
+
+.popup_trigger {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.popup_content {
+  position: relative;
+  align-self: center;
+  width: 50%;
+  max-width: 800px;
+  padding: 30px 30px 15px;
+  box-sizing: border-box;
+  background: #d3d3d3;
+  line-height: 2.0em;
+  transition: 0.5s;
+}
+
+.close_btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.popup_wrap input:checked ~ .popup_overlay {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.5s;
+}
+
+.open_btn {
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 30px;
+  margin:10px auto;
+  padding: 8px 16px;
+  color: #fff;
+  background:#0c0d62;
+  font-weight: bold;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: .3s ease;
+
+}
+.open_btn:hover{
+    background:#000;
+    color:#fff;
+    transition: .3s ease;
+}
+/*ポップアップココまで*/
+
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.button {
+  display       : inline-block;
+  border-radius : 50%;          /* 角丸       */
+  font-size     : 29pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 5%;   /* 余白       */
+  background    : rgba(0, 0, 0, 0.95);     /* 背景色     */
+  color         : rgba(255, 255, 255, 0.94);     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  opacity       : 1;           /* 透明度     */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 5px 5px 17px #666666;  /* 影の設定 */
+}
+.button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  opacity       : 0.8;         /* カーソル時透明度 */
+}
+
+/*モニター全体に広げるフッター*/
+.fwrapper{
+  width: 100%;
+  background-color: #FDE9FB;
+}
+/*コピーライト等を書く領域*/
+.footer{
+  margin: auto;
+  max-width: 800px;
+  padding: 10px;/*これを書かないとフッターの下に余白ができてしまう*/
+}
+
+*, *:before, *:after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+.contents {
+	min-height: 100vh;
+	margin: auto;
+	padding: 1em 0 10em 0;
+	background: rgb(236, 240, 241);
+}
+footer #button {
+	position: relative;
+	width: 10em;
+	height: 2em;
+	margin: 0 auto;
+	padding: 0.2em;
+	cursor: pointer;
+	-webkit-transition: all 1s ease;
+	        transition: all 1s ease;
+	text-align: center;
+	color: #00acc1;
+	border-radius: 3px 3px 0px 0px;
+	background: #006064;
+}
+footer #button:hover {
+	position: relative;
+	width: 10em;
+	height: 2em;
+	-webkit-transition: all 1s ease;
+	        transition: all 1s ease;
+}
+footer {
+	position: fixed;
+	z-index: 999;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 1.5em;
+	margin: 0 auto;
+	-webkit-transition: all 1s ease;
+	        transition: all 1s ease;
+}
+footer:hover {
+	height: 10em;
+	-webkit-transition: all 1s ease;
+	        transition: all 1s ease;
+}
+footer #container {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #006064;
+}
+footer #cont {
+	margin: 0 auto;
+	padding: 1em;
+	color: #00acc1;
+}
+footer .copyright {
+	float: left;
+	width: 50%;
+}
+footer .copyright p {
+	font-size: 0.7em;
+	line-height: 2em;
+	padding-left: 10%;
+	letter-spacing: 1px;
+	color: #ffffff;
+}
+footer .sns {
+	float: right;
+	width: 50%;
+}
+footer .sns a {
+	font-weight: bold;
+	line-height: 2em;
+	width: 2em;
+	margin: auto 0.1em;
+	float: right;
+	-webkit-transition: all, 0.3s;
+	        transition: all, 0.3s;
+	text-align: center;
+	text-decoration: none;
+	color: #ffffff;
+	border-radius: 4px;
+	background-color: #00acc1;
+}
+footer .sns a:hover {
+	-webkit-transition: all, 0.3s;
+	        transition: all, 0.3s;
+	background-color: #222222;
+}
+footer .sns .insta {
+	background-color: #e4405f;
+}
+footer .sns .fb {
+	background-color: #3b5999;
+}
+footer .sns .tw {
+	background-color: #55acee;
+}
+
+.cp_btn {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 29pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 21px 21px;   /* 余白       */
+  background    : rgba(255, 255, 255, 0.95);     /* 背景色     */
+  color         : rgba(0, 0, 0, 0.70);     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 18px #666666;  /* 影の設定 */
+  border        : 2px solid rgba(255, 255, 255, 0.95);    /* 枠の指定 */
+}
+.cp_btn:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : rgba(255, 255, 255, 0.95);     /* 背景色     */
+  background    : rgba(0, 0, 0, 0.70);     /* 文字色     */
 }

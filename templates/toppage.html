@@ -1,119 +1,65 @@
+<!DOCTYPE html>
 <html lang="ja">
-<!--ボックスをボタンに見立てた処理(笑)です-->
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js">
-    </script>
-    <title>ボタン例(変更可)</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/index.css">
+    <title>oop2-othello</title>
 </head>
+<header><div class="heading07" data-en="Reversi">Othello Game</div></header>
+<body>
+    <div class="cp_iptxt">
+    <label class="ef" for="your_name"></label>
+    <input type="text" id="your_name" size="20" style="width: 200px; height: 40px;" maxlength="10" name="name" value="" placeholder="名前を入力">
+    <select id="selectPlayer">
+        <option value="1">白(先手)</option>
+        <option value="2">黒(後手)</option>
+    </select>
+    </div>
 
-<p>TOPページ<br>
-<label for="your_name">名前: </label>
-<input type="text" id="your_name" size="20" style="width: 200px; height: 40px;" maxlength="10" name="name">
-<select id="selectPlayer">
-    <option value="1">白(先手)</option>
-    <option value="2">黒(後手)</option>
-</select>
-</p>
-<h1>手動でオセロ</h1>
-<div class="button">
-    <a href="#" class="battle">プレイ</a>
-</div>
+    <div class="button">
+        <a href="#" class="battle">対人戦</a>
+    </div>
 
-<h1>†CPU BATTLE†</h1>
-<div class="button">
-    <button class="cp_btn" id="hard">強い</button>
-    <button class="cp_btn" id="normal">普通</button>
-    <button class="cp_btn" id="easy">弱い</button>
-</div>
-
-<style>
-    html{
-        background-image: url(../static/adpDSC_1353-.jpg);
-        background-size: cover;
-    }
-    /*
-    div.namebox{
-        text-align: center;
-    }
-    */
-    p {
-        font-size: 30pt;
-        text-align: center;
-    }
-
-    h1 {
-        font-size: 30pt;
-        margin-top: 1cm;
-        text-align: center;
-    }
-
-    a.battle {
-        position: relative;
-        text-align: center;
-        font-size: 18px;
-        margin: 0 auto;
-        display: block;
-        width: 160px;
-        padding: 0;
-        text-align: center;
-        text-decoration: none;
-        margin-bottom: 1.25cm;
-        color: #FFF;
-        background: #7f7f7f;
-        border-bottom: 2px solid #000000;
-        border-radius: 4px;
-        box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
-    }
-
-    a.battle:active {
-        border-bottom: 2px solid #808080;
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
-        color: red;
-    }
-
-    button.cp_btn {
-        /*押す前の色設定*/
-        position: relative;
-        text-align: center;
-        font-size: 18pt;
-        margin: 0 auto;
-        display: block;
-        width: 160px;
-        padding: 2px;
-        padding: 0.8em;
-        text-align: center;
-        text-decoration: none;
-        color: #FFF;
-        background: #7f7f7f;
-        border-bottom: 2px solid #000000;
-        border-radius: 4px;
-        box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
-    }
-    /*押した時の色設定*/
-
-    button.cp_btn:active {
-        border-bottom: 2px solid #808080;
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
-        color: #000000;
-    }
-</style>
-
+    <div class="popup_wrap">
+        <input id="trigger" type="checkbox">
+        <div class="popup_overlay">
+            <label for="trigger" class="popup_trigger"></label>
+            <div class="popup_content">
+                <label for="trigger" class="close_btn">×</label>
+                    <p>難易度を選択</p>
+                    <button class="cp_btn" id="easy">弱い</button>
+                    <button class="cp_btn" id="normal">普通</button>
+                    <button class="cp_btn" id="herd">強い</button>
+            </div>
+        </div>
+        <label for="trigger" class="button">CPU戦</label>
+    </div>
+</body>
+<footer>
+    <div id="button">footer</div>
+    <div id="container">
+        <div id="cont">
+            <div class="copyright">
+                <p>©oop2-6.2021.</p>
+            </div>
+            <div class="sns">
+                <a href="#" class="insta"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></a>
+                <a href="#" class="tw"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></a>
+                <a href="#" class="fb"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
 <script>
     var url="/othello";
-    
-    /*
-    function gameStart() {
-        document.location.href = url + "?level=" + encodeURIComponent(level);
-    }
-    function changelevel(selectLevel){
-        console.log(selectLevel);  //デバック用
-        this.level=selectLevel;
-    }
-    */
 
     function gameStart() {
         document.location.href = url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value) 
@@ -123,26 +69,25 @@
         document.location.href = "/cpu";
     }
 
-    /*
-    document.getElementById("hard").onclick = function(){
-        changelevel("hard");
-    }
-    document.getElementById("normal").onclick = function(){
-        changelevel("normal");
-    }
-    document.getElementById("easy").onclick = function(){
-        changelevel("easy");
-    }
-    */
+    /* 名前入力用 */
+    var namearray = ["ゲレゲレ","ボロンゴ","プックル","チロル","アンドレ","リンクス","モモ","ソロ","ビビンバ","ギコギコ"];
+    var ran = choose_at_random(namearray);
+
+    function choose_at_random(arrayData) {
+            var arrayIndex = Math.floor(Math.random() * arrayData.length);
+            return arrayData[arrayIndex];
+        }
 
     document.getElementsByClassName("battle")[0].onclick = function(){
         if(document.getElementById("your_name").value){
             gameStart();
         }else{
-            alert("名前を入力してください");
+            document.getElementById("your_name").value = ran;
+            gameStart();
         }
-        
     };
+
+
     document.getElementsByClassName("cp_btn")[0].onclick = function(){
         gameStartVScpu("hard");
     };
@@ -153,3 +98,4 @@
         gameStartVScpu("easy");
     };
 </script>
+</html>

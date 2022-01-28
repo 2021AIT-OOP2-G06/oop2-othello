@@ -218,7 +218,8 @@ footer #button {
 	position: relative;
 	width: 10em;
 	height: 2em;
-	margin: 0 auto;
+	margin-right: 0;
+  margin-left: auto;
 	padding: 0.2em;
 	cursor: pointer;
 	-webkit-transition: all 1s ease;

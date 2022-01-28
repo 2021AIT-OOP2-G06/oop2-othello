@@ -27,6 +27,7 @@
         <label>リセット</label>
         <input type="button" value="Click" onclick="reboot()"><br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 
+        <h3 id="winner_p">　</h3>
     </div>
 
     <table align="center">
@@ -421,13 +422,13 @@
 
     function winner() {
         if (ScoreWh > ScoreBla) {
-            alert("白");
+            document.getElementById("winner_p").innerHTML = "勝者：白"
             reset();
         } else if (ScoreWh < ScoreBla) {
-            alert("黒");
+            document.getElementById("winner_p").innerHTML = "勝者：黒"
             reset();
         } else {
-            alert("引き分け");
+            document.getElementById("winner_p").innerHTML = "引き分け"
             reset();
         }
         twitText();

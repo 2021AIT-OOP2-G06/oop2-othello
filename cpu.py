@@ -26,7 +26,7 @@ def selectCell(row,col,player):
     if(Check(col,row,player)):
         return "NG"
 
-    #置ける時？
+    #置ける時
     if ((player==1) and (grid[row][col]==0)):
         grid[row][col] = 1
         Overturn(col,row,player)
@@ -38,9 +38,8 @@ def selectCell(row,col,player):
         #return "OK"
     #else:
         #return "ok"
-    
     #ここにputの処理を書くと動くかも？
-
+    Put(player)
     rng = np.random.default_rng(np.random.randint(0,1))
 
     while(True):

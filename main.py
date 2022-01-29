@@ -16,7 +16,6 @@ def index():
 
 @app.route('/getPosition', methods=['POST'])
 def getPosition():
-    
     row = request.json['row']
     col = request.json['col']
     player = request.json['player']

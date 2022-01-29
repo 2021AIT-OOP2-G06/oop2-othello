@@ -18,10 +18,10 @@
     <div class="cp_iptxt">
     <label class="ef" for="your_name"></label>
     <input type="text" id="your_name" size="20" style="width: 200px; height: 40px;" maxlength="10" name="name" value="" placeholder="名前を入力">
-    <select id="selectPlayer">
+    <!-- <select id="selectPlayer">
         <option value="1">白(先手)</option>
         <option value="2">黒(後手)</option>
-    </select>
+    </select> -->
     </div>
 
     <div class="button">
@@ -60,19 +60,18 @@
 </footer>
 <script>
     var url="/othello";
-
+    var cpu_url="/cpu"
     function gameStart() {
-        document.location.href = url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value) 
-        + "&coler=" + document.getElementById("selectPlayer").value;
+        document.location.href = url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value);
     }
     function gameStartVScpu(level) {
-        document.location.href = "/cpu";
+        document.location.href = cpu_url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value);
     }
 
     /* 名前入力用 */
     var namearray = ["ゲレゲレ","ボロンゴ","プックル","チロル","アンドレ","リンクス","モモ","ソロ","ビビンバ","ギコギコ"];
     var ran = choose_at_random(namearray);
-
+    console.log(ran)
     function choose_at_random(arrayData) {
             var arrayIndex = Math.floor(Math.random() * arrayData.length);
             return arrayData[arrayIndex];
@@ -89,13 +88,28 @@
 
 
     document.getElementsByClassName("cp_btn")[0].onclick = function(){
-        gameStartVScpu("hard");
+        if (document.getElementById("your_name").value == "") {
+            document.getElementById("your_name").value = ran;
+            gameStartVScpu("easy");
+        } else if (document.getElementById("your_name").value) {
+            gameStartVScpu("easy");
+        }
     };
     document.getElementsByClassName("cp_btn")[1].onclick = function(){
-        gameStartVScpu("normal");
+        if (document.getElementById("your_name").value == "") {
+            document.getElementById("your_name").value = ran;
+            gameStartVScpu("normal");
+        } else if (document.getElementById("your_name").value) {
+            gameStartVScpu("normal");
+        }
     };
     document.getElementsByClassName("cp_btn")[2].onclick = function(){
-        gameStartVScpu("easy");
+        if (document.getElementById("your_name").value == "") {
+            document.getElementById("your_name").value = ran;
+            gameStartVScpu("herd");
+        } else if (document.getElementById("your_name").value) {
+            gameStartVScpu("herd");
+        }
     };
 </script>
 </html>

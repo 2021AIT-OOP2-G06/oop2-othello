@@ -15,24 +15,9 @@
 
     <div align="center">
         &emsp;&emsp;&emsp;
-        <label class="titulo-label" id="turn">Othello</label><br><br><br>
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        <label>色</label>
-        <!-- いる？ -->
-        <select id="selectPlayer" onclick="selectPlayer()">
-            <option value="1">白</option>
-            <option value="2">黒</option>
-        </select>
-
-        <label>ロード</label>
-        <input type="button" value="Click" onclick="cpustart()"><br><br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        <label>勝敗</label>
-        <input type="button" value="Click" onclick="winner()">&emsp;&emsp;
-
-        <label>リセット</label>
-        <input type="button" value="Click" onclick="reboot()">
-
-
+        <label class="titulo-label" id="turn">Othello</label>
+        <input type="image" src="../static/reload.png" width="15px" height="15px" value="Click" onclick="reboot()">
+        <br><br><br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
     </div>
 
     <table align="center">
@@ -280,15 +265,17 @@
     });
 
 
-    function selectPlayer() {
-        var select = document.getElementById("selectPlayer").value;
-        player = parseInt(select);
-        // if (player == 1) {
-        //     document.getElementById("turn").innerHTML = "ターン: 黒";
-        // } else {
-            document.getElementById("turn").innerHTML = "ターン: 白";
-        // }
-    }
+        function selectPlayer() {
+            var query = location.search;
+            var value = query.split('=');
+            var select = decodeURIComponent(value[3]);
+            // player = parseInt(select);
+            // if (player == 1) {
+            //     document.getElementById("turn").innerHTML = "ターン: 黒";
+            // } else {
+            //     document.getElementById("turn").innerHTML = "ターン: 白";
+            // }
+        }
 
     function cpustart() {
         $(document).ready(function () {
@@ -317,6 +304,10 @@
                 col: col,
                 player: player
             }
+            const searchParams = new URLSearchParams(window.location.search);
+            if (player != null) {
+                document.getElementById("turn").innerHTML = "ターン:" + searchParams.get('your_name');
+            }
 
             $.ajax({
                 url: '/cpugetPosition',
@@ -335,11 +326,11 @@
                             //     player = 1
                             // }
                     }else if (response.message == "PASS") {
-                        alert("もう一度あなたの番です");
                         grid = response.grid;
                         ScoreWh = 0;
                         ScoreBla = 0;
                         refreshGrid();
+                        alert("もう一度あなたの番です");
                     }else if(response.message == "OK"){
                         grid = response.grid;
                         ScoreWh = 0;
@@ -430,15 +421,28 @@
     }
 
     function winner() {
-        if (ScoreWh > ScoreBla) {
+        if (ScoreBla == 0) {
             alert("白");
-            cpureset();
+            reset();
+            twitText();
+        }
+        else if (ScoreWh == 0) {
+            alert("黒");
+            reset();
+            twitText();
+        }
+        if (ScoreBla + ScoreWh == 64) {
+            if (ScoreWh > ScoreBla) {
+                alert("白");
+                reset();
         } else if (ScoreWh < ScoreBla) {
             alert("黒");
-            cpureset();
+            reset();
         } else {
-            alert("引き分け");
-            cpureset();
+                alert("引き分け");
+                reset();
+            }
+            twitText();
         }
     }
 
@@ -463,6 +467,22 @@
             });
         });
     }
+    function twitText() {
+            var s, url;
+            s = "オセロゲームで";
+            m = "駒獲得したよ!!"
+            play = "https://othello-pre.herokuapp.com/"
+            //投稿画面を開く
+            url = "http://twitter.com/share?url=" + encodeURIComponent(s + ScoreBla + m + "\n" + "君も遊んでみよう" + "\n") + (escape(play) + "\n") + ("&hashtags=オブジェクト演習");
+            window.open(url, "_blank", "width=600,height=300");
+        }
+    function loadFinished() {
+        const searchParams = new URLSearchParams(window.location.search);
+        selectPlayer();
+        cpustart();
+    }
+
+    window.onload = loadFinished;
 </script>
 
 </html>

@@ -40,26 +40,48 @@ def selectCell(row,col,player):
     for i in range(8):
         print(grid[i])
     # Put(player)
-    rng = np.random.default_rng(np.random.randint(0,1))
+
+    
     
     # CPU処理
-    while(True):
-        # 石が置けるまでランダムで選択
-        randx = int(rng.integers(low=0, high=7, size=1))
-        randy = int(rng.integers(low=0, high=7, size=1))
-        # print('random = {randx} and {randy}'.format(randx=randx,randy=randy))
-        if ((grid[randx][randy]==0)):
-            if CPUCheck(randx,randy,2):
-                # 石が置ける時，置く
-                Overturn(randx,randy,2)
-                print('put to {randx} and {randy}'.format(randx=randx,randy=randy))
-                break
+    rng = np.random.default_rng(np.random.randint(0,1))
+    # 置ける場所候補の配列
+    canput_x = []
+    canput_y = []
+    for x in range(8):
+        for y in range(8):
+            if CPUCheck(x,y,2):
+                canput_x.append(x)
+                canput_y.append(y)
+    if len(canput_x) == 0:
+        return "PASS"
+    else:
+        rand = int(rng.integers(low=0, high=len(canput_x), size=1))
+        Overturn(canput_x[rand],canput_y[rand],2)
+        return "OK"
+            
+
+    # while(True):
+    #     count=count+1
+    #     # 石が置けるまでランダムで選択
+    #     randx = int(rng.integers(low=0, high=7, size=1))
+    #     randy = int(rng.integers(low=0, high=7, size=1))
+    #     # print('random = {randx} and {randy}'.format(randx=randx,randy=randy))
+    #     if ((grid[randx][randy]==0)):
+    #         if CPUCheck(randx,randy,2):
+    #             # 石が置ける時，置く
+    #             Overturn(randx,randy,2)
+    #             print('put to {randx} and {randy}'.format(randx=randx,randy=randy))
+    #             break
+    #     elif count > 10000:
+    #         print("rand_max")
+    #         break
     
     # next_player = 3 - player
     # if(Put(next_player)):
     #     return "PASS"
     # else :
-    return "OK"
+    
 
     # 石をひっくり返す動作
 def Overturn(x,y,player):
@@ -141,7 +163,7 @@ def Overturn(x,y,player):
     # print(overturn_y)
     # print(grid[overturn_x][overturn_y])
 
-#人間のCheck
+#人間のCheck 置ける時False
 def Check( x, y, player):
     # すでに石が置いてある時
     if grid[y][x] != 0:
@@ -171,7 +193,7 @@ def Check( x, y, player):
                     searchStone = grid[int(line_y)][int(line_x)]#探索する石(null,自分，相手のどれかが入っている)
                     
                     # 自分の石が見つかったとき
-                    if searchStone == player:
+                    if searchStone == 1:
                         if tmpx != [] and tmpy != []: #返せる石が間にある
                             # print("追加しました")
                             overturn_x.append(tmpx)
@@ -188,7 +210,7 @@ def Check( x, y, player):
                         break
 
                     # 相手の石が見つかったとき
-                    elif searchStone != player:
+                    elif searchStone == 2:
                         #返せる可能性がある
                         tmpx.append(line_x)
                         tmpy.append(line_y)
@@ -196,21 +218,18 @@ def Check( x, y, player):
                 else:
                     break
 
-            if overturn_x == [] and overturn_y == []:
-                continue
-            else:
-                # put_x.append(x)
-                # put_y.append(y)
-                pass
+            # if overturn_x == [] and overturn_y == []:
+            #     continue
+            # else:
+            #     # put_x.append(x)
+            #     # put_y.append(y)
+            #     pass
 
-        # 来た座標に置いた時、石をひっくり返せるかどうか
+    # 来た座標に置いた時、石をひっくり返せるかどうか
     for i in range(len(overturn_x)):
         if overturn_x[i] != 0:
-            #print("ここにおけます")
-            #grid[y][x] = player
             return False
-            #print("ここに置けません")
-        return True
+    return True
 
 # def Put(player):
 #     put_x = []

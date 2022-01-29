@@ -218,8 +218,13 @@ footer #button {
 	position: relative;
 	width: 10em;
 	height: 2em;
+<<<<<<< Updated upstream
 	margin-right: 0;
   margin-left: auto;
+=======
+  margin-left:0;
+  margin-right:auto;
+>>>>>>> Stashed changes
 	padding: 0.2em;
 	cursor: pointer;
 	-webkit-transition: all 1s ease;

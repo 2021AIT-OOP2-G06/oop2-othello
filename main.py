@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, jsonify
 from othello import *
 import othello
@@ -42,7 +43,6 @@ def cpu_battle():
 
 @app.route('/cpugetPosition', methods=['POST'])
 def cpugetPosition():
-    
     row = request.json['row']
     col = request.json['col']
     player = request.json['player']

@@ -1,0 +1,489 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>Othello</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <link href="{{ url_for('static',filename='main.css') }}" rel="stylesheet" type="text/css">
+</head>
+
+</head>
+
+<body>
+    {%block content %} {% endblock %}
+
+    <div align="center">
+        &emsp;&emsp;&emsp;
+        <label class="titulo-label" id="turn">Othello</label>
+        <input type="image" src="../static/reload.png" width="15px" height="15px" value="Click" onclick="reboot()">
+        <br><br><br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    </div>
+
+    <table align="center">
+        <tr>
+            <td align="right">
+                <h2 id="puntaje" class="puntaje">{{score}}</h2>
+                <h4 id="scoreBlack" class="score">黒:</h4>
+                <h4 id="scoreWhite" class="score">白:</h4>
+            </td>
+            <td></td>
+            <td>
+                <div id="grid">
+                    <div class="row">
+                        <div class="cell" id="cell00" onclick="selectCell(0,0,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell01" onclick="selectCell(0,1,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell02" onclick="selectCell(0,2,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell03" onclick="selectCell(0,3,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell04" onclick="selectCell(0,4,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell05" onclick="selectCell(0,5,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell06" onclick="selectCell(0,6,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell07" onclick="selectCell(0,7,id);">
+                            <div class="disc"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" id="cell10" onclick="selectCell(1,0,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell11" onclick="selectCell(1,1,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell12" onclick="selectCell(1,2,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell13" onclick="selectCell(1,3,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell14" onclick="selectCell(1,4,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell15" onclick="selectCell(1,5,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell16" onclick="selectCell(1,6,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell17" onclick="selectCell(1,7,id);">
+                            <div class="disc"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" id="cell20" onclick="selectCell(2,0,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell21" onclick="selectCell(2,1,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell22" onclick="selectCell(2,2,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell23" onclick="selectCell(2,3,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell24" onclick="selectCell(2,4,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell25" onclick="selectCell(2,5,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell26" onclick="selectCell(2,6,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell27" onclick="selectCell(2,7,id);">
+                            <div class="disc"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" id="cell30" onclick="selectCell(3,0,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell31" onclick="selectCell(3,1,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell32" onclick="selectCell(3,2,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell33" onclick="selectCell(3,3,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell34" onclick="selectCell(3,4,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell35" onclick="selectCell(3,5,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell36" onclick="selectCell(3,6,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell37" onclick="selectCell(3,7,id);">
+                            <div class="disc"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" id="cell40" onclick="selectCell(4,0,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell41" onclick="selectCell(4,1,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell42" onclick="selectCell(4,2,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell43" onclick="selectCell(4,3,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell44" onclick="selectCell(4,4,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell45" onclick="selectCell(4,5,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell46" onclick="selectCell(4,6,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell47" onclick="selectCell(4,7,id);">
+                            <div class="disc"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" id="cell50" onclick="selectCell(5,0,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell51" onclick="selectCell(5,1,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell52" onclick="selectCell(5,2,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell53" onclick="selectCell(5,3,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell54" onclick="selectCell(5,4,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell55" onclick="selectCell(5,5,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell56" onclick="selectCell(5,6,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell57" onclick="selectCell(5,7,id);">
+                            <div class="disc"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" id="cell60" onclick="selectCell(6,0,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell61" onclick="selectCell(6,1,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell62" onclick="selectCell(6,2,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell63" onclick="selectCell(6,3,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell64" onclick="selectCell(6,4,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell65" onclick="selectCell(6,5,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell66" onclick="selectCell(6,6,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell67" onclick="selectCell(6,7,id);">
+                            <div class="disc"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell" id="cell70" onclick="selectCell(7,0,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell71" onclick="selectCell(7,1,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell72" onclick="selectCell(7,2,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell73" onclick="selectCell(7,3,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell74" onclick="selectCell(7,4,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell75" onclick="selectCell(7,5,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell76" onclick="selectCell(7,6,id);">
+                            <div class="disc"></div>
+                        </div>
+                        <div class="cell" id="cell77" onclick="selectCell(7,7,id);">
+                            <div class="disc"></div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+<script>
+    var respaldo = [
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 2, 0, 0, 0],
+        [0, 0, 0, 2, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0]
+    ];
+
+    var grid = [];
+    var player = 1;
+    var ScoreWh = 0;
+    var ScoreBla = 0;
+
+    window.addEventListener('load', (event) => {
+        hard
+        hardstart();
+    });
+
+
+    function selectPlayer() {
+        var query = location.search;
+        var value = query.split('=');
+        var select = decodeURIComponent(value[3]);
+        // player = parseInt(select);
+        // if (player == 1) {
+        //     document.getElementById("turn").innerHTML = "ターン: 黒";
+        // } else {
+        //     document.getElementById("turn").innerHTML = "ターン: 白";
+        // }
+    }
+
+    function hardstart() {
+        $(document).ready(function () {
+            $.ajax({
+                url: '/hardstart',
+                data: "",
+                type: 'POST',
+                dataType: "json",
+                contentType: 'application/json;charset=UTF-8',
+                success: function (response) {
+                    grid = response.grid;
+                    // refreshGrid();
+                    reboot();
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    }
+
+    function selectCell(row, col, id) {
+        $(document).ready(function () {
+            var data = {
+                row: row,
+                col: col,
+                player: player
+            }
+            const searchParams = new URLSearchParams(window.location.search);
+            if (player != null) {
+                document.getElementById("turn").innerHTML = "ターン:" + searchParams.get('your_name');
+            }
+
+            $.ajax({
+                url: '/hardgetPosition',
+                data: JSON.stringify(data),
+                type: 'POST',
+                dataType: "json",
+                contentType: 'application/json;charset=UTF-8',
+                success: function (response) {
+                    console.log(response.message)
+                    if (response.message == "NG") {
+                        alert("その場所には置けません");
+                        // なにもしない
+                        // if (player == 1) {
+                        //     player = 2
+                        // } else {
+                        //     player = 1
+                        // }
+                    } else if (response.message == "PASS") {
+                        grid = response.grid;
+                        ScoreWh = 0;
+                        ScoreBla = 0;
+                        refreshGrid();
+                        alert("もう一度あなたの番です");
+                    } else if (response.message == "OK") {
+                        grid = response.grid;
+                        ScoreWh = 0;
+                        ScoreBla = 0;
+                        refreshGrid();
+                        // response=OK
+                        //ターンの切り替え
+                        // if (player == 1) {
+                        //     player = 2;
+                        //     document.getElementById("turn").innerHTML = "ターン:くろ";
+                        // } else {
+                        //     player = 1;
+                        //     document.getElementById("turn").innerHTML = "ターン:しろ";
+                        // }
+                    } else {
+                        console.log(response.message);
+                    }
+
+
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    }
+
+    function refreshGrid() {
+        if (arrayFull() != true) {
+            for (var row = 0; row < grid.length; row++) {
+                for (var col = 0; col < grid.length; col++) {
+                    if (grid[row][col] == 0) { // none
+                        document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#069685";
+                    }
+                    if (grid[row][col] == 1) { // white
+                        document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#FFFFFF";
+                        ScoreWh = ScoreWh + 1;
+                        document.getElementById("scoreWhite").innerHTML = "白: " + ScoreWh.toString();
+                    }
+                    if (grid[row][col] == 2) { // black
+                        document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#000000";
+                        ScoreBla = ScoreBla + 1;
+                        document.getElementById("scoreBlack").innerHTML = "黒: " + ScoreBla.toString();
+                    }
+                }
+            }
+        }
+        //  else {
+        //     for (var row = 0; row < grid.length; row++) {
+        //         for (var col = 0; col < grid.length; col++) {
+        //             //セルが0の場合：緑色に塗られる
+        //             if (grid[row][col] == 0) {
+        //                 document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#069685";
+        //             }
+        //             if (grid[row][col] == 1) {
+        //                 document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#FFFFFF";
+        //                 ScoreWh = ScoreWh + 1;
+        //                 document.getElementById("scoreWhite").innerHTML = "白: " + ScoreWh.toString();
+        //             }
+        //             if (grid[row][col] == 2) {
+        //                 document.getElementById("cell" + row + col).childNodes[1].style.backgroundColor = "#000000";
+        //                 ScoreBla = ScoreBla + 1;
+        //                 document.getElementById("scoreBlack").innerHTML = "黒: " + ScoreBla.toString();
+        //             }
+        //         }
+        //     }
+        // }
+    }
+
+    //gridが全て埋まっているときTruw
+    function arrayFull() {
+        for (var row = 0; row < grid.length; row++) {
+            for (var col = 0; col < grid.length; col++) {
+                if (grid[row][col] == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    function reboot() {
+        ScoreWh = 0;
+        ScoreBla = 0;
+        hardreset();
+        console.log("reset");
+        // alert("リセットします");
+    }
+
+    function winner() {
+        if (ScoreBla == 0) {
+            alert("白");
+            reset();
+            twitText();
+        }
+        else if (ScoreWh == 0) {
+            alert("黒");
+            reset();
+            twitText();
+        }
+        if (ScoreBla + ScoreWh == 64) {
+            if (ScoreWh > ScoreBla) {
+                alert("白");
+                reset();
+            } else if (ScoreWh < ScoreBla) {
+                alert("黒");
+                reset();
+            } else {
+                alert("引き分け");
+                reset();
+            }
+            twitText();
+        }
+    }
+
+    function hardreset() {
+        $(document).ready(function () {
+            var data = {
+                respaldo: respaldo
+            }
+            $.ajax({
+                url: '/hardreset',
+                data: JSON.stringify(data),
+                type: 'POST',
+                dataType: "json",
+                contentType: 'application/json;charset=UTF-8',
+                success: function (response) {
+                    grid = response.grid;
+                    refreshGrid();
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    }
+    function twitText() {
+        var s, url;
+        s = "オセロゲームで";
+        m = "駒獲得したよ!!"
+        play = "https://othello-pre.herokuapp.com/"
+        //投稿画面を開く
+        url = "http://twitter.com/share?url=" + encodeURIComponent(s + ScoreBla + m + "\n" + "君も遊んでみよう" + "\n") + (escape(play) + "\n") + ("&hashtags=オブジェクト演習");
+        window.open(url, "_blank", "width=600,height=300");
+    }
+    function loadFinished() {
+        const searchParams = new URLSearchParams(window.location.search);
+        selectPlayer();
+        hardstart();
+    }
+
+    window.onload = loadFinished;
+</script>
+
+</html>

@@ -35,9 +35,9 @@
             <div class="popup_content">
                 <label for="trigger" class="close_btn">×</label>
                     <p>難易度を選択</p>
-                    <button class="cp_btn" id="easy">弱い</button>
-                    <button class="cp_btn" id="normal">普通</button>
-                    <button class="cp_btn" id="herd">強い</button>
+                    <button class="cp_easy" id="easy">弱い</button>
+                    <button class="cp_normal" id="normal">普通</button>
+                    <button class="cp_hard" id="hard">強い</button>
             </div>
         </div>
         <label for="trigger" class="button">CPU戦</label>
@@ -61,12 +61,20 @@
 <script>
     var url="/othello";
     var cpu_url="/cpu"
+    var easy_url = "/easy"
+    var hard_url = "/hard"
     function gameStart() {
         document.location.href = url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value);
     }
     function gameStartVScpu(level) {
-        document.location.href = cpu_url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value);
+        document.location.href =  cpu_url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value);
     }
+    function gameStartVSeasy(level) {
+        document.location.href = easy_url + "?level=&your_name="+ encodeURIComponent(document.getElementById("your_name").value);
+    }
+    function gameStartVSeasy(level) {
+            document.location.href = hard_url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value);
+        }
 
     /* 名前入力用 */
     var namearray = ["ゲレゲレ","ボロンゴ","プックル","チロル","アンドレ","リンクス","モモ","ソロ","ビビンバ","ギコギコ"];
@@ -87,28 +95,28 @@
     };
 
 
-    document.getElementsByClassName("cp_btn")[0].onclick = function(){
+    document.getElementsByClassName("cp_easy")[0].onclick = function(){
         if (document.getElementById("your_name").value == "") {
             document.getElementById("your_name").value = ran;
-            gameStartVScpu("easy");
+            gameStartVSeasy("easy");
         } else if (document.getElementById("your_name").value) {
-            gameStartVScpu("easy");
+            gameStartVSeasy("easy");
         }
     };
-    document.getElementsByClassName("cp_btn")[1].onclick = function(){
+    document.getElementsByClassName("cp_normal")[0].onclick = function(){
         if (document.getElementById("your_name").value == "") {
             document.getElementById("your_name").value = ran;
-            gameStartVScpu("normal");
+            gameStartVScpu("cpu");
         } else if (document.getElementById("your_name").value) {
-            gameStartVScpu("normal");
+            gameStartVScpu("cpu");
         }
     };
-    document.getElementsByClassName("cp_btn")[2].onclick = function(){
+    document.getElementsByClassName("cp_hard")[0].onclick = function(){
         if (document.getElementById("your_name").value == "") {
             document.getElementById("your_name").value = ran;
-            gameStartVScpu("herd");
+            gameStartVScpu("hard");
         } else if (document.getElementById("your_name").value) {
-            gameStartVScpu("herd");
+            gameStartVScpu("hard");
         }
     };
 </script>

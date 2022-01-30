@@ -218,7 +218,8 @@ footer #button {
 	position: relative;
 	width: 10em;
 	height: 2em;
-	margin: 0 auto;
+  margin-left:0;
+  margin-right:auto;
 	padding: 0.2em;
 	cursor: pointer;
 	-webkit-transition: all 1s ease;
@@ -309,7 +310,7 @@ footer .sns .tw {
 	background-color: #55acee;
 }
 
-.cp_btn {
+.cp_easy {
   display       : inline-block;
   border-radius : 5%;          /* 角丸       */
   font-size     : 29pt;        /* 文字サイズ */
@@ -323,7 +324,45 @@ footer .sns .tw {
   box-shadow    : 6px 6px 18px #666666;  /* 影の設定 */
   border        : 2px solid rgba(255, 255, 255, 0.95);    /* 枠の指定 */
 }
-.cp_btn:hover {
+.cp_easy:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : rgba(255, 255, 255, 0.95);     /* 背景色     */
+  background    : rgba(0, 0, 0, 0.70);     /* 文字色     */
+}
+.cp_normal {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 29pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 21px 21px;   /* 余白       */
+  background    : rgba(255, 255, 255, 0.95);     /* 背景色     */
+  color         : rgba(0, 0, 0, 0.70);     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 18px #666666;  /* 影の設定 */
+  border        : 2px solid rgba(255, 255, 255, 0.95);    /* 枠の指定 */
+}
+.cp_normal:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : rgba(255, 255, 255, 0.95);     /* 背景色     */
+  background    : rgba(0, 0, 0, 0.70);     /* 文字色     */
+}
+.cp_hard {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 29pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 21px 21px;   /* 余白       */
+  background    : rgba(255, 255, 255, 0.95);     /* 背景色     */
+  color         : rgba(0, 0, 0, 0.70);     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 18px #666666;  /* 影の設定 */
+  border        : 2px solid rgba(255, 255, 255, 0.95);    /* 枠の指定 */
+}
+.cp_hard:hover {
   box-shadow    : none;        /* カーソル時の影消去 */
   color         : rgba(255, 255, 255, 0.95);     /* 背景色     */
   background    : rgba(0, 0, 0, 0.70);     /* 文字色     */

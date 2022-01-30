@@ -18,10 +18,10 @@
     <div class="cp_iptxt">
     <label class="ef" for="your_name"></label>
     <input type="text" id="your_name" size="20" style="width: 200px; height: 40px;" maxlength="10" name="name" value="" placeholder="名前を入力">
-    <select id="selectPlayer">
+    <!-- <select id="selectPlayer">
         <option value="1">白(先手)</option>
         <option value="2">黒(後手)</option>
-    </select>
+    </select> -->
     </div>
 
     <div class="button">
@@ -35,9 +35,9 @@
             <div class="popup_content">
                 <label for="trigger" class="close_btn">×</label>
                     <p>難易度を選択</p>
-                    <button class="cp_btn" id="easy">弱い</button>
-                    <button class="cp_btn" id="normal">普通</button>
-                    <button class="cp_btn" id="herd">強い</button>
+                    <button class="cp_easy" id="easy">弱い</button>
+                    <button class="cp_normal" id="normal">普通</button>
+                    <button class="cp_hard" id="hard">強い</button>
             </div>
         </div>
         <label for="trigger" class="button">CPU戦</label>
@@ -60,19 +60,26 @@
 </footer>
 <script>
     var url="/othello";
-
+    var cpu_url="/cpu"
+    var easy_url = "/easy"
+    var hard_url = "/hard"
     function gameStart() {
-        document.location.href = url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value) 
-        + "&coler=" + document.getElementById("selectPlayer").value;
+        document.location.href = url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value);
     }
     function gameStartVScpu(level) {
-        document.location.href = "/cpu";
+        document.location.href =  cpu_url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value);
     }
+    function gameStartVSeasy(level) {
+        document.location.href = easy_url + "?level=&your_name="+ encodeURIComponent(document.getElementById("your_name").value);
+    }
+    function gameStartVSeasy(level) {
+            document.location.href = hard_url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value);
+        }
 
     /* 名前入力用 */
     var namearray = ["ゲレゲレ","ボロンゴ","プックル","チロル","アンドレ","リンクス","モモ","ソロ","ビビンバ","ギコギコ"];
     var ran = choose_at_random(namearray);
-
+    console.log(ran)
     function choose_at_random(arrayData) {
             var arrayIndex = Math.floor(Math.random() * arrayData.length);
             return arrayData[arrayIndex];
@@ -88,14 +95,29 @@
     };
 
 
-    document.getElementsByClassName("cp_btn")[0].onclick = function(){
-        gameStartVScpu("hard");
+    document.getElementsByClassName("cp_easy")[0].onclick = function(){
+        if (document.getElementById("your_name").value == "") {
+            document.getElementById("your_name").value = ran;
+            gameStartVSeasy("easy");
+        } else if (document.getElementById("your_name").value) {
+            gameStartVSeasy("easy");
+        }
     };
-    document.getElementsByClassName("cp_btn")[1].onclick = function(){
-        gameStartVScpu("normal");
+    document.getElementsByClassName("cp_normal")[0].onclick = function(){
+        if (document.getElementById("your_name").value == "") {
+            document.getElementById("your_name").value = ran;
+            gameStartVScpu("cpu");
+        } else if (document.getElementById("your_name").value) {
+            gameStartVScpu("cpu");
+        }
     };
-    document.getElementsByClassName("cp_btn")[2].onclick = function(){
-        gameStartVScpu("easy");
+    document.getElementsByClassName("cp_hard")[0].onclick = function(){
+        if (document.getElementById("your_name").value == "") {
+            document.getElementById("your_name").value = ran;
+            gameStartVScpu("hard");
+        } else if (document.getElementById("your_name").value) {
+            gameStartVScpu("hard");
+        }
     };
 </script>
 </html>

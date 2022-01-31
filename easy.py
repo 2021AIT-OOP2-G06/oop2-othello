@@ -51,6 +51,7 @@ def selectCell(row,col,player):
     else:
         idx = overturn.index(min(overturn))#一番返せる石が多い
         Overturn(canput_x[idx],canput_y[idx],2)
+        print(grid)
         return "OK"
 
     # 石をひっくり返す動作

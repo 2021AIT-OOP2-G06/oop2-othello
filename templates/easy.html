@@ -359,7 +359,7 @@
     }
 
     function refreshGrid() {
-        if (arrayFull() != true) {
+        //if (arrayFull() != true) {
             for (var row = 0; row < grid.length; row++) {
                 for (var col = 0; col < grid.length; col++) {
                     if (grid[row][col] == 0) { // none
@@ -377,7 +377,10 @@
                     }
                 }
             }
-        }
+            //if (arrayFull() == true) {
+                //winner()
+            //}
+        //}
         //  else {
         //     for (var row = 0; row < grid.length; row++) {
         //         for (var col = 0; col < grid.length; col++) {

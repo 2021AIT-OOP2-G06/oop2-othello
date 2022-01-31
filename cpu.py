@@ -22,9 +22,10 @@ change_check = [-1, 0, 1]
 
 def selectCell(row,col,player):
     #ひっくり返せる石があるか確認、なければ何も置かずreturn
-    if(Check(col,row,player)):
+    if(Check(col,row,1)):
         return "NG"
-
+    if(Put(1)):
+        return "Pass"
     #置ける時
     if ((player==1) and (grid[row][col]==0)):
         grid[row][col] = 1
@@ -57,10 +58,12 @@ def selectCell(row,col,player):
         return "PASS"
     else:
         rand = int(np.random.choice(len(canput_x)))
+        if rand == []:
+            return "PASS"
         print(rand)
         Overturn(canput_x[rand],canput_y[rand],2)
         return "OK"
-            
+
 
     # while(True):
     #     count=count+1
@@ -230,78 +233,81 @@ def Check( x, y, player):
     for i in range(len(overturn_x)):
         if overturn_x[i] != 0:
             return False
+    for i in range(len(overturn_y)):
+        if overturn_y[i] != 0:
+            return False
     return True
 
-# def Put(player):
-#     put_x = []
-#     put_y = []
-#     for x in range(8):
-#         for y in range(8):
-#                 # 石が置いてあるマスの場合
-#                 # print(self.list[x][y])
-#             if grid[int(y)][int(x)] != 0:
-#                 continue
-#                 # この座標に置いた場合のひっくり返せる石をさがす
-#                 # print(x,y)
-#                 #self.Reverce(x, y)
-#             overturn_x = []
-#             overturn_y = []
-#             change_check = [-1, 0, 1]
+def Put(player):
+    put_x = []
+    put_y = []
+    for x in range(8):
+        for y in range(8):
+                # 石が置いてあるマスの場合
+                # print(self.list[x][y])
+            if grid[int(y)][int(x)] != 0:
+                continue
+                # この座標に置いた場合のひっくり返せる石をさがす
+                # print(x,y)
+                #self.Reverce(x, y)
+            overturn_x = []
+            overturn_y = []
+            change_check = [-1, 0, 1]
 
-#         # 置いたマスの縦、横、ななめのひっくり返せる石の座標の取得
-#         # 取得された座標はのself.overturn_x、self.overturn_yに格納される
-#             for check_x in change_check:
-#                 for check_y in change_check:
-#                 # check_xとcheck_yが置いた石の座標と被ったときの処理を飛ばす
-#                     if check_x == 0 and check_y == 0:
-#                         continue
-#                     tmpx = []
-#                     tmpy = []
-#                     dist = 0
-#                 # 直線の石を調べる
-#                     while(True):
-#                         dist += 1
-#                         # x座標とy座標の石を直線的に探す
-#                         line_x = x + (check_x * dist)
-#                         line_y = y + (check_y * dist)
-#                         # 探索先に石があるとき、ひっくり返せるかの判定
-#                         if 0 <= line_x < 8 and 0 <= line_y < 8:#端に到達したら終わり
-#                             searchStone = grid[int(line_y)][int(line_x)]#探索する石(null,自分，相手のどれかが入っている)
-#                             # 自分の石が見つかったとき
-#                             if searchStone == player:
-#                                 if tmpx != [] and tmpy != []: #返せる石が間にある
-#                                     # print("追加しました")
-#                                     overturn_x.append(tmpx)
-#                                     overturn_y.append(tmpy)
-#                                     break
-#                                 else:
-#                                     break
-#                             #null
-#                             elif searchStone == 0:
-#                                 break
+        # 置いたマスの縦、横、ななめのひっくり返せる石の座標の取得
+        # 取得された座標はのself.overturn_x、self.overturn_yに格納される
+            for check_x in change_check:
+                for check_y in change_check:
+                # check_xとcheck_yが置いた石の座標と被ったときの処理を飛ばす
+                    if check_x == 0 and check_y == 0:
+                        continue
+                    tmpx = []
+                    tmpy = []
+                    dist = 0
+                # 直線の石を調べる
+                    while(True):
+                        dist += 1
+                        # x座標とy座標の石を直線的に探す
+                        line_x = x + (check_x * dist)
+                        line_y = y + (check_y * dist)
+                        # 探索先に石があるとき、ひっくり返せるかの判定
+                        if 0 <= line_x < 8 and 0 <= line_y < 8:#端に到達したら終わり
+                            searchStone = grid[int(line_y)][int(line_x)]#探索する石(null,自分，相手のどれかが入っている)
+                            # 自分の石が見つかったとき
+                            if searchStone == player:
+                                if tmpx != [] and tmpy != []: #返せる石が間にある
+                                    # print("追加しました")
+                                    overturn_x.append(tmpx)
+                                    overturn_y.append(tmpy)
+                                    break
+                                else:
+                                    break
+                            #null
+                            elif searchStone == 0:
+                                break
 
-#                             #はし
-#                             elif searchStone == 9:
-#                                 break
+                            #はし
+                            elif searchStone == 9:
+                                break
 
-#                             # 相手の石が見つかったとき
-#                             elif searchStone != player:
-#                                 #返せる可能性がある
-#                                 tmpx.append(line_x)
-#                                 tmpy.append(line_y)
-#                         else:
-#                             break
+                            # 相手の石が見つかったとき
+                            elif searchStone != player:
+                                #返せる可能性がある
+                                tmpx.append(line_x)
+                                tmpy.append(line_y)
+                        else:
+                            break
 
-#             if overturn_x == [] and overturn_y == []:
-#                 continue
-#             else:
-#                 put_x.append(x)
-#                 put_y.append(y)
+            if overturn_x == [] and overturn_y == []:
+                continue
+            else:
+                put_x.append(x)
+                put_y.append(y)
 
-#     if put_x == []:
-#         return True
-#     else :
-#         return False
+    if put_x == []:
+        return True
+    else :
+        return False
 
 #置けたらTrue
 def CPUCheck(x,y,player):

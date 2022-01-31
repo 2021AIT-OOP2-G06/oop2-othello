@@ -18,11 +18,21 @@ grid = [
         [ 0, 0, 0, 0, 0, 0, 0, 0],
         [ 0, 0, 0, 0, 0, 0, 0, 0],
     ]
+ex_grid = [
+        [30,-12,0,-1,-1,0,-12,30],
+        [-12,-15,-3,-3,-3,-3,-15,-12],
+        [0,-3,0,-1,-1,0,-3,0],
+        [-1,-3,-1,-1,-1,-1,-3,-1],
+        [-1,-3,-1,-1,-1,-1,-3,-1],
+        [0,-3,0,-1,-1,0,-3,0],
+        [-12,-15,-3,-3,-3,-3,-15,-12],
+        [30,-12,0,-1,-1,0,-12,30]
+]
 change_check = [-1, 0, 1]
 
 def selectCell(row,col,player):
     #ひっくり返せる石があるか確認、なければ何も置かずreturn
-    if(Check(col,row,player)):
+    if(Check(col,row,1)):
         return "NG"
 
     #置ける時
@@ -38,21 +48,25 @@ def selectCell(row,col,player):
     canput_x = []
     canput_y = []
     overturn = []
+    ex_overturn = []
     for x in range(8):
         for y in range(8):
             if CPUCheck(x,y,2):
                 canput_x.append(x)
                 canput_y.append(y)
                 overturn.append(Heuristic(x,y,2))
-                print('discover = {linex} and {liney},Heuristic is {h}'.format(linex=x,liney=y,h=Heuristic(x,y,2)))
-
+                ex_overturn.append(ex_grid[x][y]+Heuristic(x,y,2))
+                print('discover = {linex} and {liney},Heuristic is {h} , EX {ex}'.format(linex=x,liney=y,h=Heuristic(x,y,2),ex= ex_grid[x][y]+Heuristic(x,y,2)))
+                print("hoge ={h}".format(h = overturn))
     if len(canput_x) == 0:
         return "PASS"
     elif Put(2):
         return "PASS"
     else:
-        idx = overturn.index(min(overturn))#一番返せる石が多い
+        idx = ex_overturn.index(max(ex_overturn))#一番返せる石が多い
         Overturn(canput_x[idx],canput_y[idx],2)
+        for i in range(8):
+            print(grid[i])
         return "OK"
 
 

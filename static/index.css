@@ -1,9 +1,10 @@
 html {
-  background-image: url(../static/14479.png);
+  background-image: url(../static/adpDSC_1353-.jpg);
   background-color: rgba(180, 255, 180, 0.5);
   background-blend-mode: lighten;
   background-size: cover;
   background-position: left top;
+  background-repeat: no-repeat;
 }
 
 .container{
@@ -12,7 +13,7 @@ html {
   justify-content: center;
   background: #ccc;
   flex-wrap: wrap;
-  /* align-items: center; */
+  align-items: center;
 }
 
 /*
@@ -35,8 +36,8 @@ body{
   padding-left: 15%;
   text-align: center;
   padding: 5%;
-  font-size: 80px;
-  font-family: Garamond;
+  font-size: 100px;
+  font-family: luxus-brut, cursive;
   color: rgb(33, 39, 33);
 }
 
@@ -50,8 +51,8 @@ body{
   content: attr(data-en);
   position: absolute;
   transform: rotate(-5deg);
-  top: -20px;
-  left: 15%;
+  top: 7%;
+  left: 25%;
   color: rgba(224, 66, 114, 0.6);
   font-size: 80px;
   font-weight: 400;
@@ -363,6 +364,25 @@ footer .sns .tw {
   border        : 2px solid rgba(255, 255, 255, 0.95);    /* 枠の指定 */
 }
 .cp_hard:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : rgba(255, 255, 255, 0.95);     /* 背景色     */
+  background    : rgba(0, 0, 0, 0.70);     /* 文字色     */
+}
+.cp_ex {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 29pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 21px 21px;   /* 余白       */
+  background    : rgba(255, 255, 255, 0.95);     /* 背景色     */
+  color         : rgba(0, 0, 0, 0.70);     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 6px 6px 18px #666666;  /* 影の設定 */
+  border        : 2px solid rgba(255, 255, 255, 0.95);    /* 枠の指定 */
+}
+.cp_ex:hover {
   box-shadow    : none;        /* カーソル時の影消去 */
   color         : rgba(255, 255, 255, 0.95);     /* 背景色     */
   background    : rgba(0, 0, 0, 0.70);     /* 文字色     */

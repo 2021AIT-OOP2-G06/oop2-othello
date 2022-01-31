@@ -330,9 +330,9 @@
                 success: function(response) {
                     if (response.message !== "OK") {
                         if (response.message == "PASS")
-                            alert("もう一度あなたの番です")
+                            swal('「pass」', 'もう一度あなたの番です', 'success');
                         else{
-                            alert("そこには置けません")
+                            swal('「error」', 'ここには置けません', 'error');
                         }
                     }
                     if (response.message == "NG"){
@@ -424,28 +424,90 @@
     }
 
     function winner() {
-        if (ScoreBla == 0){
-            alert("白");
-            reset();
-            twitText();
+        if (ScoreBla == 0) {
+            Swal.fire({
+                title: '黒の勝ちです'
+                , html: '結果をツイートしますか'
+                , showCancelButton: true
+                , cancelButtonText: 'やめる'
+            }).then(function (result) {
+                console.log(result);
+                if (result.isConfirmed) {
+                    reset();
+                    twitText();
+                } else if (result.isDismissed) {
+                    reset();
+                    document.location.href = ref
+                }
+            });
         }
-        else if(ScoreWh == 0){
-            alert("黒");
-            reset();
-            twitText();
+        else if (ScoreWh == 0) {
+            Swal.fire({
+                title: '白の勝ちです'
+                , html: '結果をツイートしますか'
+                , showCancelButton: true
+                , cancelButtonText: 'やめる'
+            }).then(function (result) {
+                console.log(result);
+                if (result.isConfirmed) {
+                    reset();
+                    twitText();
+                } else if (result.isDismissed) {
+                    cpureset();
+                    document.location.href = ref
+                }
+            });
         }
-        if (ScoreBla + ScoreWh == 64){
+        if (ScoreBla + ScoreWh == 64) {
             if (ScoreWh > ScoreBla) {
-                alert("白");
-                reset();
+                Swal.fire({
+                    title: '黒の勝ちです'
+                    , html: '結果をツイートしますか'
+                    , showCancelButton: true
+                    , cancelButtonText: 'やめる'
+                }).then(function (result) {
+                    console.log(result);
+                    if (result.isConfirmed) {
+                        reset();
+                        twitText();
+                    } else if (result.isDismissed) {
+                        reset();
+                        document.location.href = ref
+                    }
+                });
             } else if (ScoreWh < ScoreBla) {
-                alert("黒");
-                reset();
+                Swal.fire({
+                    title: '白の勝ちです'
+                    , html: '結果をツイートしますか'
+                    , showCancelButton: true
+                    , cancelButtonText: 'やめる'
+                }).then(function (result) {
+                    console.log(result);
+                    if (result.isConfirmed) {
+                        reset();
+                        twitText();
+                    } else if (result.isDismissed) {
+                        reset();
+                        document.location.href = ref
+                    }
+                });
             } else {
-                alert("引き分け");
-                reset();
+                Swal.fire({
+                    title: '引き分けです'
+                    , html: '結果をツイートしますか'
+                    , showCancelButton: true
+                    , cancelButtonText: 'やめる'
+                }).then(function (result) {
+                    console.log(result);
+                    if (result.isConfirmed) {
+                        cpureset();
+                        twitText();
+                    } else if (result.isDismissed) {
+                        cpureset();
+                        document.location.href = ref
+                    }
+                });
             }
-            twitText();
         }
     }
 

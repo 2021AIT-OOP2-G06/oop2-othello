@@ -1,9 +1,10 @@
 html {
-  background-image: url(../static/14479.png);
+  background-image: url(../static/adpDSC_1353-.jpg);
   background-color: rgba(180, 255, 180, 0.5);
   background-blend-mode: lighten;
   background-size: cover;
   background-position: left top;
+  background-repeat: no-repeat;
 }
 
 .container{
@@ -12,7 +13,7 @@ html {
   justify-content: center;
   background: #ccc;
   flex-wrap: wrap;
-  /* align-items: center; */
+  align-items: center;
 }
 
 /*
@@ -35,8 +36,8 @@ body{
   padding-left: 15%;
   text-align: center;
   padding: 5%;
-  font-size: 80px;
-  font-family: Garamond;
+  font-size: 100px;
+  font-family: luxus-brut, cursive;
   color: rgb(33, 39, 33);
 }
 
@@ -50,8 +51,8 @@ body{
   content: attr(data-en);
   position: absolute;
   transform: rotate(-5deg);
-  top: -20px;
-  left: 15%;
+  top: 7%;
+  left: 25%;
   color: rgba(224, 66, 114, 0.6);
   font-size: 80px;
   font-weight: 400;

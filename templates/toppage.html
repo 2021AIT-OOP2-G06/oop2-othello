@@ -17,16 +17,14 @@
 <body>
     <div class="cp_iptxt">
     <label class="ef" for="your_name"></label>
-    <input type="text" id="your_name" size="20" style="width: 200px; height: 40px;" maxlength="10" name="name" value="" placeholder="名前を入力">
+    <input type="text" id="your_name" size="20" style="width:250px; height: 50px;" maxlength="10" name="name" value="" placeholder="名前を入力">
     <!-- <select id="selectPlayer">
         <option value="1">白(先手)</option>
         <option value="2">黒(後手)</option>
     </select> -->
     </div>
 
-    <div class="button">
-        <a href="#" class="battle">対人戦</a>
-    </div>
+    <div class="button">対人戦</div>
 
     <div class="popup_wrap">
         <input id="trigger" type="checkbox">
@@ -59,6 +57,7 @@
         </div>
     </div>
 </footer>
+</html>
 <script>
     var url="/othello";
     var cpu_url="/cpu"
@@ -83,7 +82,9 @@
 
 
     /* 名前入力用 */
-    var namearray = ["ゲレゲレ","ボロンゴ","プックル","チロル","アンドレ","リンクス","モモ","ソロ","ビビンバ","ギコギコ"];
+    var namearray = ["ゲレゲレ","ボロンゴ","プックル","チロル","アンドレ","リンクス","モモ","ソロ","ビビンバ","ギコギコ",
+                    "タイキシャトル","ハルウララ","ヒシアマゾン","マヤノトップガン","トウカイテイオー","アグネスタキオン",
+                    "セイウンスカイ","メジロマックイーン","マウンテンゴリラ","ターナップ"];
     var ran = choose_at_random(namearray);
     console.log(ran)
     function choose_at_random(arrayData) {
@@ -91,7 +92,7 @@
             return arrayData[arrayIndex];
         }
 
-    document.getElementsByClassName("battle")[0].onclick = function(){
+    document.getElementsByClassName("button")[0].onclick = function(){
         if(document.getElementById("your_name").value){
             gameStart();
         }else{
@@ -134,4 +135,3 @@
             }
         };
 </script>
-</html>

@@ -6,6 +6,8 @@
     <title>Othello</title>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
     <link href="{{ url_for('static',filename='main.css') }}" rel="stylesheet" type="text/css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 </head>
@@ -259,7 +261,11 @@
     var player = 1;
     var ScoreWh = 0;
     var ScoreBla = 0;
-
+    var r_ScoreWh = 0;
+    var r_ScoreBla = 0;
+    var flag = 0;
+    var ref = document.referrer;
+    console.log(ref)
     window.addEventListener('load', (event) => {
         cpustart();
     });
@@ -318,24 +324,21 @@
                 success: function (response) {
                 console.log(response.message)
                     if (response.message == "NG") {
-                            alert("その場所には置けません");
-                            // なにもしない
-                            // if (player == 1) {
-                            //     player = 2
-                            // } else {
-                            //     player = 1
-                            // }
+                        swal('「error」', 'ここには置けません', 'error');
                     }else if (response.message == "PASS") {
                         grid = response.grid;
                         ScoreWh = 0;
                         ScoreBla = 0;
                         refreshGrid();
-                        alert("もう一度あなたの番です");
+                        swal('「pass」', 'もう一度あなたの番です', 'success');
                     }else if(response.message == "OK"){
                         grid = response.grid;
+                        r_ScoreWh = ScoreBla;
+                        r_ScoreBla = ScoreWh;
                         ScoreWh = 0;
                         ScoreBla = 0;
                         refreshGrid();
+                        winner();
                         // response=OK
                         //ターンの切り替え
                         // if (player == 1) {
@@ -422,27 +425,89 @@
 
     function winner() {
         if (ScoreBla == 0) {
-            alert("白");
-            reset();
-            twitText();
+            Swal.fire({
+                title: '黒の勝ちです'
+                , html: '結果をツイートしますか'
+                , showCancelButton: true
+                , cancelButtonText: 'やめる'
+            }).then(function (result) {
+                console.log(result);
+                if (result.isConfirmed) {
+                    cpureset();
+                    twitText();
+                } else if (result.isDismissed) {
+                    cpureset();
+                    document.location.href = ref
+                }
+            });
         }
         else if (ScoreWh == 0) {
-            alert("黒");
-            reset();
-            twitText();
+            Swal.fire({
+                title: '白の勝ちです'
+                , html: '結果をツイートしますか'
+                , showCancelButton: true
+                , cancelButtonText: 'やめる'
+            }).then(function (result) {
+                console.log(result);
+                if (result.isConfirmed) {
+                    cpureset();
+                    twitText();
+                } else if (result.isDismissed) {
+                    cpureset();
+                    document.location.href = ref
+                }
+            });
         }
         if (ScoreBla + ScoreWh == 64) {
             if (ScoreWh > ScoreBla) {
-                alert("白");
-                reset();
+                Swal.fire({
+                    title: '黒の勝ちです'
+                    , html: '結果をツイートしますか'
+                    , showCancelButton: true
+                    , cancelButtonText: 'やめる'
+                }).then(function (result) {
+                    console.log(result);
+                    if (result.isConfirmed) {
+                        cpureset();
+                        twitText();
+                    } else if (result.isDismissed) {
+                        cpureset();
+                        document.location.href = ref
+                    }
+                });
         } else if (ScoreWh < ScoreBla) {
-            alert("黒");
-            reset();
+            Swal.fire({
+                    title: '白の勝ちです'
+                    , html: '結果をツイートしますか'
+                    , showCancelButton: true
+                    , cancelButtonText: 'やめる'
+                }).then(function (result) {
+                    console.log(result);
+                    if (result.isConfirmed) {
+                        cpureset();
+                        twitText();
+                    } else if (result.isDismissed) {
+                        cpureset();
+                        document.location.href = ref
+                    }
+                });
         } else {
-                alert("引き分け");
-                reset();
+                Swal.fire({
+                    title: '引き分けです'
+                    , html: '結果をツイートしますか'
+                    , showCancelButton: true
+                    , cancelButtonText: 'やめる'
+                }).then(function (result) {
+                    console.log(result);
+                    if (result.isConfirmed) {
+                        cpureset();
+                        twitText();
+                    } else if (result.isDismissed) {
+                        cpureset();
+                        document.location.href = ref
+                    }
+                });
             }
-            twitText();
         }
     }
 
@@ -473,7 +538,7 @@
             m = "駒獲得したよ!!"
             play = "https://othello-pre.herokuapp.com/"
             //投稿画面を開く
-            url = "http://twitter.com/share?url=" + encodeURIComponent(s + ScoreBla + m + "\n" + "君も遊んでみよう" + "\n") + (escape(play) + "\n") + ("&hashtags=オブジェクト演習");
+            url = "http://twitter.com/share?url=" + encodeURIComponent(s + r_ScoreBla + m + "\n" + "君も遊んでみよう" + "\n") + (escape(play) + "\n") + ("&hashtags=オブジェクト演習");
             window.open(url, "_blank", "width=600,height=300");
         }
     function loadFinished() {

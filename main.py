@@ -6,7 +6,10 @@ from cpu import *
 import cpu
 from easy import *
 import easy
-
+from hard import *
+import hard
+from ex import *
+import ex
 app = Flask(__name__)
 
 # http://127.0.0.1:5000/
@@ -91,18 +94,40 @@ def hardgetPosition():
     row = request.json['row']
     col = request.json['col']
     player = request.json['player']
-    sms = easy.selectCell(row, col,player)
+    sms = hard.selectCell(row, col,player)
     print(sms)
-    return jsonify( grid=easy.grid, message=sms)
+    return jsonify( grid=hard.grid, message=sms)
 
 @app.route('/hardstart', methods=['POST'])
 def hardstart():
-    return jsonify( grid=easy.grid)
+    return jsonify( grid=hard.grid)
 
 @app.route('/hardreset', methods=['POST'])
 def hardreset():
-    easy.grid = request.json['respaldo']
-    return jsonify( grid=easy.grid)
+    hard.grid = request.json['respaldo']
+    return jsonify( grid=hard.grid)
+
+@app.route('/ex')
+def ex_battle():
+    return render_template('ex.html')
+
+@app.route('/exgetPosition', methods=['POST'])
+def exgetPosition():
+    row = request.json['row']
+    col = request.json['col']
+    player = request.json['player']
+    sms = ex.selectCell(row, col,player)
+    print(sms)
+    return jsonify( grid=ex.grid, message=sms)
+
+@app.route('/exstart', methods=['POST'])
+def exstart():
+    return jsonify( grid=ex.grid)
+
+@app.route('/exreset', methods=['POST'])
+def exreset():
+    ex.grid = request.json['respaldo']
+    return jsonify( grid=ex.grid)
 
 if __name__ == '__main__':
     app.config['TEMPLATES_AUTO_RELOAD'] = True

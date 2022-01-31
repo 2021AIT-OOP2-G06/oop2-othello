@@ -38,6 +38,7 @@
                     <button class="cp_easy" id="easy">弱い</button>
                     <button class="cp_normal" id="normal">普通</button>
                     <button class="cp_hard" id="hard">強い</button>
+                    <button class="cp_ex" id="ex">EX</button>
             </div>
         </div>
         <label for="trigger" class="button">CPU戦</label>
@@ -63,18 +64,23 @@
     var cpu_url="/cpu"
     var easy_url = "/easy"
     var hard_url = "/hard"
+    var ex_url = "/ex"
     function gameStart() {
-        document.location.href = url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value);
+        document.location.href = url + "?your_name=" + encodeURIComponent(document.getElementById("your_name").value);
     }
     function gameStartVScpu(level) {
-        document.location.href =  cpu_url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value);
+        document.location.href =  cpu_url + "?your_name=" + encodeURIComponent(document.getElementById("your_name").value);
     }
     function gameStartVSeasy(level) {
-        document.location.href = easy_url + "?level=&your_name="+ encodeURIComponent(document.getElementById("your_name").value);
+        document.location.href = easy_url + "?your_name="+ encodeURIComponent(document.getElementById("your_name").value);
     }
-    function gameStartVSeasy(level) {
-            document.location.href = hard_url + "?level=&your_name=" + encodeURIComponent(document.getElementById("your_name").value);
+    function gameStartVShard(level) {
+            document.location.href = hard_url + "?your_name=" + encodeURIComponent(document.getElementById("your_name").value);
         }
+    function gameStartVSex(level) {
+            document.location.href = ex_url + "?your_name=" + encodeURIComponent(document.getElementById("your_name").value);
+        }
+
 
     /* 名前入力用 */
     var namearray = ["ゲレゲレ","ボロンゴ","プックル","チロル","アンドレ","リンクス","モモ","ソロ","ビビンバ","ギコギコ"];
@@ -114,10 +120,18 @@
     document.getElementsByClassName("cp_hard")[0].onclick = function(){
         if (document.getElementById("your_name").value == "") {
             document.getElementById("your_name").value = ran;
-            gameStartVScpu("hard");
+            gameStartVShard("hard");
         } else if (document.getElementById("your_name").value) {
-            gameStartVScpu("hard");
+            gameStartVShard("hard");
         }
     };
+    document.getElementsByClassName("cp_ex")[0].onclick = function () {
+            if (document.getElementById("your_name").value == "") {
+                document.getElementById("your_name").value = ran;
+                gameStartVSex("ex");
+            } else if (document.getElementById("your_name").value) {
+                gameStartVSex("ex");
+            }
+        };
 </script>
 </html>

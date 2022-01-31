@@ -4,11 +4,14 @@
 ===
 # DEMO
 
-直感的に伝えわるデモ動画や図解を載せる(後で)
+![download](https://user-images.githubusercontent.com/68636376/151844249-11c6a6d8-9757-407f-ae6f-d12fee84525c.gif)
+
 
 # Features
 
 webで様々な強さを持ったCPUとオセロができる
+結果をTweetすることができる
+
 
 # Requirement
 

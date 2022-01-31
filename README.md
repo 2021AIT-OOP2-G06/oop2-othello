@@ -9,9 +9,11 @@
 
 # Features
 
-webで様々な強さを持ったCPUとオセロができる
-結果をTweetすることができる
-
+- web版オセロを遊ぶことができる
+- 対人戦,CPU戦がある
+- CPU戦には難易度easy,normal,hard,exがある
+- exは評価値によるAIである
+- 結果をTweetすることができる
 
 # Requirement
 
@@ -24,10 +26,6 @@ webで様々な強さを持ったCPUとオセロができる
 * numpy==1.22.1
 * Werkzeug==2.0.2
 
-# Installation
-```
-pip install -r requirements.txt
-```
 # Usage
 
 ```
@@ -36,9 +34,17 @@ cd oop2-othello
 python main.py
 ```
 
-# Note
+# Installation
+```
+pip install -r requirements.txt
+```
 
-注意点などがあれば書く
+# Note
+#### herokuを用いたデプロイversion
+#### [https://othello-pre.herokuapp.com/](https://othello-pre.herokuapp.com/)
+#### ***デプロイ版ではローカルとの動作が違います***
+
+
 
 # Author
 | 役割     | 氏名      | 学籍番号     | GitHubアカウント(登録メールアドレス) | 開発担当 |

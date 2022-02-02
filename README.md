@@ -9,11 +9,11 @@
 
 # Features
 
-- web版オセロを遊ぶことができる
-- 対人戦,CPU戦がある
-- CPU戦には難易度easy,normal,hard,exがある
-- exは評価値によるAIである
-- 結果をTweetすることができる
+- Flaskを用いたwebで遊べるオセロ
+- 豊富な難易度設定
+- 評価値を用いたオセロCPUの実装
+- 対人戦も可能
+- デプロイ済み
 
 # Requirement
 

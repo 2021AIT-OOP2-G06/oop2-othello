@@ -43,6 +43,7 @@ pip install -r requirements.txt
 #### herokuを用いたデプロイversion
 #### [https://othello-pre.herokuapp.com/](https://othello-pre.herokuapp.com/)
 #### ***デプロイ版ではローカルとの動作が違います***
+#### ***まともに動作するものを遊びたい方はローカルで動かしてみてください***
 
 
 
